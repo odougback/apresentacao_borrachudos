@@ -1,0 +1,6 @@
+Material/
+.DS_Store
+Thumbs.db
+*.log
+.vscode/
+.idea/
