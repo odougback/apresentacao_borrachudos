@@ -57,6 +57,19 @@ table {
   border-spacing: 0;
 }
 
+/* === SCREEN-READER / SEO ONLY (visually hidden, indexable) === */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 /* === PRESENTATION === */
 .presentation {
   position: relative;
@@ -163,7 +176,7 @@ table {
 
 #currentSlide {
   font-weight: 700;
-  color: #4ade80;
+  color: #fff;
 }
 
 /* === FULLSCREEN === */
@@ -258,6 +271,237 @@ table {
   box-shadow: 0 0 8px rgba(74, 222, 128, 0.6);
 }
 
+/* === HELPER BUTTON === */
+.helper-btn {
+  position: absolute;
+  top: 80px;
+  left: 24px;
+  width: 42px;
+  height: 42px;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #fff;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  transition: all 0.2s ease;
+  opacity: 0;
+}
+
+.presentation:hover .helper-btn {
+  opacity: 1;
+}
+
+.helper-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.helper-btn svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* === MODAL === */
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.modal.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.modal-panel {
+  position: relative;
+  background: #1a1a1a;
+  color: #fff;
+  border-radius: 18px;
+  padding: 40px 44px;
+  width: min(720px, calc(100% - 48px));
+  max-height: calc(100vh - 80px);
+  overflow-y: auto;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+  transform: translateY(20px) scale(0.98);
+  transition: transform 0.35s cubic-bezier(0.22, 0.9, 0.32, 1);
+}
+
+.modal.open .modal-panel {
+  transform: translateY(0) scale(1);
+}
+
+.modal-panel::-webkit-scrollbar {
+  width: 8px;
+}
+.modal-panel::-webkit-scrollbar-track {
+  background: transparent;
+}
+.modal-panel::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 99px;
+}
+
+.modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  font-size: 22px;
+  font-weight: 300;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  line-height: 1;
+}
+
+.modal-close:hover {
+  background: rgba(255, 255, 255, 0.18);
+  transform: rotate(90deg);
+}
+
+.modal-eyebrow {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #4ade80;
+  background: rgba(74, 222, 128, 0.12);
+  padding: 5px 12px;
+  border-radius: 99px;
+  margin-bottom: 16px;
+}
+
+.modal-title {
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin-bottom: 22px;
+  color: #fff;
+}
+
+.modal-body {
+  font-size: 15px;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.modal-body p {
+  margin-bottom: 14px;
+}
+
+.modal-body h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: #4ade80;
+  margin: 22px 0 10px;
+  letter-spacing: 0.2px;
+}
+
+.modal-body ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 14px;
+}
+
+.modal-body li {
+  position: relative;
+  padding-left: 22px;
+  margin-bottom: 10px;
+}
+
+.modal-body li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 10px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #4ade80;
+}
+
+.modal-body strong {
+  color: #fff;
+  font-weight: 700;
+}
+
+.modal-body em {
+  font-style: italic;
+  color: #a5d4b6;
+}
+
+/* === ROTATE PROMPT === */
+.rotate-prompt {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: #0a0a0a;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px 28px;
+  color: #fff;
+}
+
+.rotate-icon {
+  width: 72px;
+  height: 72px;
+  color: #4ade80;
+  margin-bottom: 28px;
+  animation: rotate-anim 2.4s ease-in-out infinite;
+  transform-origin: center;
+}
+
+@keyframes rotate-anim {
+  0%, 20% { transform: rotate(0deg); }
+  50%, 70% { transform: rotate(-90deg); }
+  90%, 100% { transform: rotate(0deg); }
+}
+
+.rotate-title {
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  margin-bottom: 14px;
+}
+
+.rotate-text {
+  font-size: 14px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.7);
+  max-width: 320px;
+}
+
 /* === RESPONSIVE === */
 @media (max-width: 768px) {
   .nav-btn {
@@ -271,4 +515,16 @@ table {
   .counter { top: 16px; right: 16px; padding: 8px 14px; font-size: 13px; }
   .fullscreen-btn { top: 16px; left: 16px; }
   .dots { opacity: 0.6; bottom: 16px; }
+  .helper-btn { top: 68px; left: 16px; }
+  .modal-panel { padding: 32px 24px; }
+  .modal-title { font-size: 22px; }
+}
+
+@media (max-width: 900px) and (orientation: portrait) {
+  .rotate-prompt {
+    display: flex;
+  }
+  .presentation {
+    display: none;
+  }
 }
