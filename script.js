@@ -462,6 +462,40 @@
   modalClose.addEventListener('click', closeModal);
   modalBackdrop.addEventListener('click', closeModal);
 
+  /* ============ ROTATE HINT ============ */
+  const rotateHint = document.getElementById('rotateHint');
+  const rotateHintClose = document.getElementById('rotateHintClose');
+  const HINT_KEY = 'rotateHintDismissed';
+
+  function maybeShowRotateHint() {
+    if (!rotateHint) return;
+    if (sessionStorage.getItem(HINT_KEY) === '1') return;
+
+    const isPortraitMobile =
+      window.matchMedia('(max-width: 900px) and (orientation: portrait)').matches;
+
+    if (isPortraitMobile) {
+      requestAnimationFrame(() => rotateHint.classList.add('show'));
+      // Auto-dismiss after 6s
+      setTimeout(dismissRotateHint, 6000);
+    } else {
+      rotateHint.classList.remove('show');
+    }
+  }
+
+  function dismissRotateHint() {
+    if (!rotateHint) return;
+    rotateHint.classList.remove('show');
+    sessionStorage.setItem(HINT_KEY, '1');
+  }
+
+  if (rotateHintClose) rotateHintClose.addEventListener('click', dismissRotateHint);
+  window.addEventListener('orientationchange', () =>
+    setTimeout(maybeShowRotateHint, 200)
+  );
+  window.addEventListener('resize', maybeShowRotateHint);
+
   /* ============ INIT ============ */
   update();
+  maybeShowRotateHint();
 })();
