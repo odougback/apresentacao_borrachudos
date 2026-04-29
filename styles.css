@@ -137,6 +137,8 @@ table {
 
 /* === PRESENTATION === */
 .presentation {
+  display: flex;
+  flex-direction: column;
   position: relative;
   width: 100vw;
   height: 100vh;
@@ -145,12 +147,14 @@ table {
 }
 
 .slide {
-  padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+  padding: env(safe-area-inset-top) env(safe-area-inset-right) 0 env(safe-area-inset-left);
 }
 
 .slides {
-  position: absolute;
-  inset: 0;
+  flex: 1;
+  position: relative;
+  min-height: 0;
+  overflow: hidden;
 }
 
 .slide {
@@ -281,10 +285,9 @@ table {
 
 /* === PROGRESS BAR === */
 .progress-bar {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  position: relative;
+  flex-shrink: 0;
+  width: 100%;
   height: 3px;
   background: rgba(255, 255, 255, 0.08);
   z-index: 10;
@@ -301,7 +304,7 @@ table {
 /* === DOTS === */
 .dots {
   position: absolute;
-  bottom: calc(24px + env(safe-area-inset-bottom));
+  bottom: calc(60px + env(safe-area-inset-bottom));
   left: 50%;
   transform: translateX(-50%);
   display: flex;
@@ -600,6 +603,37 @@ table {
   background: rgba(255, 255, 255, 0.22);
 }
 
+/* === FOOTER === */
+.site-footer {
+  position: relative;
+  flex-shrink: 0;
+  width: 100%;
+  padding: 14px env(safe-area-inset-right) calc(14px + env(safe-area-inset-bottom)) env(safe-area-inset-left);
+  background: #0a0a0a;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  text-align: center;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  color: rgba(255, 255, 255, 0.55);
+  z-index: 10;
+}
+
+.site-footer a {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.site-footer a:hover {
+  color: #4ade80;
+}
+
+.footer-sep {
+  margin: 0 6px;
+  opacity: 0.5;
+}
+
 /* === RESPONSIVE === */
 @media (max-width: 768px) {
   .nav-btn {
@@ -612,8 +646,12 @@ table {
   .nav-next { right: calc(12px + env(safe-area-inset-right)); }
   .counter { top: calc(16px + env(safe-area-inset-top)); right: calc(16px + env(safe-area-inset-right)); padding: 8px 14px; font-size: 13px; }
   .fullscreen-btn { top: calc(16px + env(safe-area-inset-top)); left: calc(16px + env(safe-area-inset-left)); }
-  .dots { opacity: 0.6; bottom: calc(16px + env(safe-area-inset-bottom)); }
+  .dots { opacity: 0.6; bottom: calc(52px + env(safe-area-inset-bottom)); }
   .helper-btn { top: calc(68px + env(safe-area-inset-top)); left: calc(16px + env(safe-area-inset-left)); }
+  .site-footer {
+    font-size: 10px;
+    padding: 10px env(safe-area-inset-right) calc(10px + env(safe-area-inset-bottom)) env(safe-area-inset-left);
+  }
   .modal-panel { padding: 32px 24px; }
   .modal-title { font-size: 22px; }
 }
