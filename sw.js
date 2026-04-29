@@ -1,4 +1,4 @@
-const CACHE_NAME = 'borrachudos-v1';
+const CACHE_NAME = 'borrachudos-v2';
 
 const ASSETS = [
   './',
@@ -8,22 +8,22 @@ const ASSETS = [
   './manifest.json',
   './favicon.svg',
   './icon-maskable.svg',
-  './img/01-capa.png',
-  './img/02-ciclo-vida.png',
-  './img/03-criadouros.png',
-  './img/04-por-que-controlar.png',
-  './img/05-metodos-controle.png',
-  './img/06-bti.png',
-  './img/07-modo-acao-bti.png',
-  './img/08-dose-bti.png',
-  './img/09-calibragem-regador.png',
-  './img/10-aplicacao.png',
-  './img/11-fatores-variaveis.png',
-  './img/12-carreamento.png',
-  './img/13-analise-comparativa-2.png',
-  './img/14-analise-comparativa-4.png',
-  './img/15-consideracoes.png',
-  './img/16-obrigado.png'
+  './img/01-capa.webp',
+  './img/02-ciclo-vida.webp',
+  './img/03-criadouros.webp',
+  './img/04-por-que-controlar.webp',
+  './img/05-metodos-controle.webp',
+  './img/06-bti.webp',
+  './img/07-modo-acao-bti.webp',
+  './img/08-dose-bti.webp',
+  './img/09-calibragem-regador.webp',
+  './img/10-aplicacao.webp',
+  './img/11-fatores-variaveis.webp',
+  './img/12-carreamento.webp',
+  './img/13-analise-comparativa-2.webp',
+  './img/14-analise-comparativa-4.webp',
+  './img/15-consideracoes.webp',
+  './img/16-obrigado.webp'
 ];
 
 // Install: pre-cache all assets

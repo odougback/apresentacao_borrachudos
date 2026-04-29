@@ -10,6 +10,53 @@
     });
   }
 
+  /* ============ LOADER ============ */
+  const loader = document.getElementById('loader');
+  const loaderFill = document.getElementById('loaderFill');
+  const loaderText = document.getElementById('loaderText');
+  const slideImages = document.querySelectorAll('.slide img');
+  const totalImages = slideImages.length;
+  let loadedImages = 0;
+  let loaderHidden = false;
+
+  function updateLoader() {
+    const pct = (loadedImages / totalImages) * 100;
+    loaderFill.style.width = pct + '%';
+    loaderText.textContent = 'Carregando ' + loadedImages + '/' + totalImages;
+
+    if (loadedImages >= totalImages && !loaderHidden) {
+      hideLoader();
+    }
+  }
+
+  function hideLoader() {
+    if (loaderHidden) return;
+    loaderHidden = true;
+    setTimeout(() => {
+      loader.classList.add('hidden');
+      setTimeout(() => loader.remove(), 600);
+    }, 250);
+  }
+
+  slideImages.forEach((img) => {
+    if (img.complete && img.naturalHeight !== 0) {
+      loadedImages++;
+    } else {
+      img.addEventListener('load', () => {
+        loadedImages++;
+        updateLoader();
+      });
+      img.addEventListener('error', () => {
+        loadedImages++;
+        updateLoader();
+      });
+    }
+  });
+  updateLoader();
+
+  // Fallback: hide loader after 10s even if some images fail silently
+  setTimeout(hideLoader, 10000);
+
   /* ============ SLIDE TEXTS ============ */
   const slideTexts = [
     {
