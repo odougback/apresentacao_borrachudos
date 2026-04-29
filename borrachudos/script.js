@@ -503,22 +503,10 @@
       text: 'Vamos te mostrar como navegar pela apresentação. Leva menos de 30 segundos.'
     },
     {
-      target: '.nav-next',
-      title: 'Navegar entre slides',
-      text: 'Use as setas laterais para avançar e voltar. No teclado: ← e →. No celular, deslize com o dedo ou toque na metade da tela.',
-      placement: 'left'
-    },
-    {
-      target: '.dots',
-      title: 'Acesso rápido',
-      text: 'Clique em qualquer ponto do rodapé para pular direto para um slide específico.',
-      placement: 'top'
-    },
-    {
-      target: '.counter',
-      title: 'Onde você está',
-      text: 'O contador mostra o slide atual e o total da apresentação.',
-      placement: 'bottom-left'
+      target: '.home-btn',
+      title: 'Voltar ao site',
+      text: 'Retorna para a página principal da Aracaju Comércio e Serviços.',
+      placement: 'right'
     },
     {
       target: '.fullscreen-btn',
@@ -528,7 +516,7 @@
     },
     {
       target: '.helper-btn',
-      title: 'Texto do slide',
+      title: 'Informações',
       text: 'Abre um painel com todo o conteúdo escrito do slide atual. Atalho: H.',
       placement: 'right'
     },
@@ -539,9 +527,22 @@
       placement: 'right'
     },
     {
-      target: null,
-      title: 'Tudo pronto!',
-      text: 'Aproveite a apresentação. Se precisar, é só voltar aqui pelo botão de ajuda.'
+      target: '.dots',
+      title: 'Acesso rápido',
+      text: 'Clique em qualquer ponto do rodapé para pular direto para um slide específico.',
+      placement: 'top'
+    },
+    {
+      target: '.nav-next',
+      title: 'Navegar entre slides',
+      text: 'Use as setas laterais para avançar e voltar. No teclado: ← e →. No celular, deslize com o dedo ou toque na metade da tela.',
+      placement: 'left'
+    },
+    {
+      target: '.counter',
+      title: 'Onde você está',
+      text: 'O contador mostra o slide atual e o total da apresentação.',
+      placement: 'bottom-left'
     }
   ];
 

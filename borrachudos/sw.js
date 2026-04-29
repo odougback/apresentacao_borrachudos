@@ -1,4 +1,4 @@
-const CACHE_NAME = 'borrachudos-v2';
+const CACHE_NAME = 'borrachudos-v4';
 
 const ASSETS = [
   './',
@@ -6,8 +6,7 @@ const ASSETS = [
   './styles.css',
   './script.js',
   './manifest.json',
-  './favicon.svg',
-  './icon-maskable.svg',
+  './img/favicon.png',
   './img/01-capa.webp',
   './img/02-ciclo-vida.webp',
   './img/03-criadouros.webp',

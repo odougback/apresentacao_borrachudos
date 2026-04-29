@@ -24,7 +24,7 @@ Apresentação web em formato deck fullscreen sobre **controle biológico de mos
 
 ## Como usar
 
-Abra o `index.html` em qualquer navegador moderno.
+Abra o `borrachudos/index.html` em qualquer navegador moderno.
 
 ### Controles
 
@@ -39,15 +39,25 @@ Abra o `index.html` em qualquer navegador moderno.
 
 ## Stack
 
-HTML + CSS + JavaScript puro. Sem dependências, sem build.
+Site em HTML + CSS + JavaScript puro. Sem dependências de runtime.
+Build/otimização opcional com Node.js + sharp (apenas para conversão de imagens).
 
 ## Estrutura
 
 ```
 .
-├── index.html      # estrutura do deck
-├── styles.css      # reset + estilos da apresentação
-├── script.js       # navegação (teclado, mouse, touch, fullscreen)
-├── img/            # 16 slides em PNG
+├── borrachudos/             # site (deploy desta pasta como raiz do domínio)
+│   ├── index.html
+│   ├── styles.css
+│   ├── script.js
+│   ├── manifest.json        # PWA
+│   ├── sw.js                # service worker
+│   ├── favicon.svg
+│   ├── icon-maskable.svg
+│   ├── robots.txt
+│   ├── sitemap.xml
+│   └── img/                 # 16 slides em WebP
+├── convert.js               # script de PNG→WebP (build)
+├── package.json             # dependências de build (sharp)
 └── README.md
 ```
