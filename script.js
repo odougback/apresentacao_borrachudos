@@ -495,7 +495,219 @@
   );
   window.addEventListener('resize', maybeShowRotateHint);
 
+  /* ============ TOUR ============ */
+  const tourSteps = [
+    {
+      target: null,
+      title: 'Bem-vindo!',
+      text: 'Vamos te mostrar como navegar pela apresentação. Leva menos de 30 segundos.'
+    },
+    {
+      target: '.nav-next',
+      title: 'Navegar entre slides',
+      text: 'Use as setas laterais para avançar e voltar. No teclado: ← e →. No celular, deslize com o dedo ou toque na metade da tela.',
+      placement: 'left'
+    },
+    {
+      target: '.dots',
+      title: 'Acesso rápido',
+      text: 'Clique em qualquer ponto do rodapé para pular direto para um slide específico.',
+      placement: 'top'
+    },
+    {
+      target: '.counter',
+      title: 'Onde você está',
+      text: 'O contador mostra o slide atual e o total da apresentação.',
+      placement: 'bottom-left'
+    },
+    {
+      target: '.fullscreen-btn',
+      title: 'Tela cheia',
+      text: 'Maximize a apresentação para uma experiência imersiva. Atalho: F.',
+      placement: 'right'
+    },
+    {
+      target: '.helper-btn',
+      title: 'Texto do slide',
+      text: 'Abre um painel com todo o conteúdo escrito do slide atual. Atalho: H.',
+      placement: 'right'
+    },
+    {
+      target: '.tour-btn',
+      title: 'Rever este tutorial',
+      text: 'Pode chamar este tutorial novamente a qualquer momento clicando aqui.',
+      placement: 'right'
+    },
+    {
+      target: null,
+      title: 'Tudo pronto!',
+      text: 'Aproveite a apresentação. Se precisar, é só voltar aqui pelo botão de ajuda.'
+    }
+  ];
+
+  const tour = document.getElementById('tour');
+  const tourBtn = document.getElementById('tourBtn');
+  const tourSpotlight = document.getElementById('tourSpotlight');
+  const tourTooltip = document.getElementById('tourTooltip');
+  const tourStepEl = document.getElementById('tourStep');
+  const tourTitle = document.getElementById('tourTitle');
+  const tourText = document.getElementById('tourText');
+  const tourSkip = document.getElementById('tourSkip');
+  const tourPrev = document.getElementById('tourPrev');
+  const tourNext = document.getElementById('tourNext');
+  const presentationEl = document.querySelector('.presentation');
+  const TOUR_KEY = 'tourCompleted';
+
+  let tourIndex = 0;
+  let tourActive = false;
+
+  function startTour() {
+    tourIndex = 0;
+    tourActive = true;
+    tour.classList.add('open');
+    tour.setAttribute('aria-hidden', 'false');
+    presentationEl.classList.add('tour-active');
+    showTourStep(0);
+  }
+
+  function endTour() {
+    tourActive = false;
+    tour.classList.remove('open');
+    tour.setAttribute('aria-hidden', 'true');
+    presentationEl.classList.remove('tour-active');
+    localStorage.setItem(TOUR_KEY, '1');
+  }
+
+  function showTourStep(i) {
+    if (i < 0 || i >= tourSteps.length) return;
+    tourIndex = i;
+    const step = tourSteps[i];
+    tourStepEl.textContent = i + 1 + ' / ' + tourSteps.length;
+    tourTitle.textContent = step.title;
+    tourText.textContent = step.text;
+    tourPrev.disabled = i === 0;
+    tourNext.textContent = i === tourSteps.length - 1 ? 'Concluir' : 'Próximo';
+
+    positionTour(step);
+  }
+
+  function positionTour(step) {
+    const target = step.target ? document.querySelector(step.target) : null;
+    const margin = 12;
+
+    if (!target) {
+      // Centered, no spotlight
+      tourSpotlight.classList.add('no-target');
+      const ttRect = tourTooltip.getBoundingClientRect();
+      const tw = ttRect.width || 320;
+      const th = ttRect.height || 200;
+      tourTooltip.style.top = (window.innerHeight - th) / 2 + 'px';
+      tourTooltip.style.left = (window.innerWidth - tw) / 2 + 'px';
+      return;
+    }
+
+    tourSpotlight.classList.remove('no-target');
+    const r = target.getBoundingClientRect();
+    const pad = 8;
+
+    // Spotlight rectangle around target
+    tourSpotlight.style.top = (r.top - pad) + 'px';
+    tourSpotlight.style.left = (r.left - pad) + 'px';
+    tourSpotlight.style.width = (r.width + pad * 2) + 'px';
+    tourSpotlight.style.height = (r.height + pad * 2) + 'px';
+
+    // Tooltip placement
+    const tw = 320;
+    const th = 200;
+    let top, left;
+
+    switch (step.placement) {
+      case 'left':
+        top = r.top + r.height / 2 - th / 2;
+        left = r.left - tw - margin;
+        break;
+      case 'right':
+        top = r.top + r.height / 2 - th / 2;
+        left = r.right + margin;
+        break;
+      case 'top':
+        top = r.top - th - margin;
+        left = r.left + r.width / 2 - tw / 2;
+        break;
+      case 'bottom':
+        top = r.bottom + margin;
+        left = r.left + r.width / 2 - tw / 2;
+        break;
+      case 'bottom-left':
+        top = r.bottom + margin;
+        left = Math.max(margin, r.right - tw);
+        break;
+      default:
+        top = r.bottom + margin;
+        left = r.left;
+    }
+
+    // Clamp to viewport
+    top = Math.max(margin, Math.min(top, window.innerHeight - th - margin));
+    left = Math.max(margin, Math.min(left, window.innerWidth - tw - margin));
+
+    tourTooltip.style.top = top + 'px';
+    tourTooltip.style.left = left + 'px';
+  }
+
+  function tourNextStep() {
+    if (tourIndex >= tourSteps.length - 1) {
+      endTour();
+    } else {
+      showTourStep(tourIndex + 1);
+    }
+  }
+
+  function tourPrevStep() {
+    if (tourIndex > 0) showTourStep(tourIndex - 1);
+  }
+
+  tourBtn.addEventListener('click', startTour);
+  tourSkip.addEventListener('click', endTour);
+  tourNext.addEventListener('click', tourNextStep);
+  tourPrev.addEventListener('click', tourPrevStep);
+
+  document.addEventListener('keydown', (e) => {
+    if (!tourActive) return;
+    if (e.key === 'Escape') endTour();
+    if (e.key === 'ArrowRight' || e.key === 'Enter') {
+      e.preventDefault();
+      tourNextStep();
+    }
+    if (e.key === 'ArrowLeft') {
+      e.preventDefault();
+      tourPrevStep();
+    }
+  });
+
+  window.addEventListener('resize', () => {
+    if (tourActive) positionTour(tourSteps[tourIndex]);
+  });
+
+  // Auto-start on first visit (after loader hides)
+  function maybeAutoStartTour() {
+    if (localStorage.getItem(TOUR_KEY) === '1') return;
+    setTimeout(startTour, 800);
+  }
+
   /* ============ INIT ============ */
   update();
   maybeShowRotateHint();
+
+  // Wait for loader to finish before auto-starting tour
+  if (loadedImages >= totalImages) {
+    maybeAutoStartTour();
+  } else {
+    const checkInterval = setInterval(() => {
+      if (loaderHidden) {
+        clearInterval(checkInterval);
+        maybeAutoStartTour();
+      }
+    }, 200);
+  }
 })();

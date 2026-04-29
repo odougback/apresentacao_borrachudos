@@ -379,6 +379,201 @@ table {
   height: 20px;
 }
 
+/* === TOUR BUTTON === */
+.tour-btn {
+  position: absolute;
+  top: calc(136px + env(safe-area-inset-top));
+  left: calc(24px + env(safe-area-inset-left));
+  width: 42px;
+  height: 42px;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #fff;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  transition: all 0.2s ease;
+  opacity: 0;
+}
+
+.presentation:hover .tour-btn {
+  opacity: 1;
+}
+
+.tour-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.tour-btn svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* === TOUR === */
+.tour {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.tour.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.tour-spotlight {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 12px;
+  box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.78);
+  pointer-events: none;
+  transition: top 0.45s cubic-bezier(0.22, 0.9, 0.32, 1),
+              left 0.45s cubic-bezier(0.22, 0.9, 0.32, 1),
+              width 0.45s cubic-bezier(0.22, 0.9, 0.32, 1),
+              height 0.45s cubic-bezier(0.22, 0.9, 0.32, 1),
+              border-radius 0.3s ease;
+}
+
+.tour-spotlight.no-target {
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 0;
+  box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.85);
+}
+
+.tour-tooltip {
+  position: absolute;
+  background: #1a1a1a;
+  color: #fff;
+  padding: 24px 26px;
+  border-radius: 14px;
+  width: min(320px, calc(100vw - 32px));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+  transition: top 0.45s cubic-bezier(0.22, 0.9, 0.32, 1),
+              left 0.45s cubic-bezier(0.22, 0.9, 0.32, 1),
+              opacity 0.3s ease;
+  opacity: 0;
+}
+
+.tour.open .tour-tooltip {
+  opacity: 1;
+}
+
+.tour-step {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #4ade80;
+  background: rgba(74, 222, 128, 0.12);
+  padding: 4px 10px;
+  border-radius: 99px;
+  margin-bottom: 12px;
+}
+
+.tour-title {
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  margin-bottom: 8px;
+  color: #fff;
+}
+
+.tour-text {
+  font-size: 14px;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.75);
+  margin-bottom: 18px;
+}
+
+.tour-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.tour-skip {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 500;
+  background: transparent;
+  padding: 6px 0;
+  transition: color 0.2s ease;
+}
+
+.tour-skip:hover {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.tour-nav-group {
+  display: flex;
+  gap: 6px;
+}
+
+.tour-prev,
+.tour-next {
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 13px;
+  border-radius: 99px;
+  transition: all 0.2s ease;
+}
+
+.tour-prev {
+  width: 32px;
+  height: 32px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 1;
+}
+
+.tour-prev:hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.tour-prev:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.tour-next {
+  background: #4ade80;
+  color: #0a0a0a;
+  padding: 8px 16px;
+}
+
+.tour-next:hover {
+  background: #6ee69b;
+  transform: translateY(-1px);
+}
+
+/* Force-show UI elements while tour is active */
+.presentation.tour-active .nav-btn,
+.presentation.tour-active .dots,
+.presentation.tour-active .fullscreen-btn,
+.presentation.tour-active .helper-btn,
+.presentation.tour-active .tour-btn {
+  opacity: 1 !important;
+}
+
 /* === MODAL === */
 .modal {
   position: fixed;
@@ -648,6 +843,7 @@ table {
   .fullscreen-btn { top: calc(16px + env(safe-area-inset-top)); left: calc(16px + env(safe-area-inset-left)); }
   .dots { opacity: 0.6; bottom: calc(52px + env(safe-area-inset-bottom)); }
   .helper-btn { top: calc(68px + env(safe-area-inset-top)); left: calc(16px + env(safe-area-inset-left)); }
+  .tour-btn { top: calc(120px + env(safe-area-inset-top)); left: calc(16px + env(safe-area-inset-left)); }
   .site-footer {
     font-size: 10px;
     padding: 10px env(safe-area-inset-right) calc(10px + env(safe-area-inset-bottom)) env(safe-area-inset-left);

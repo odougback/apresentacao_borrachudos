@@ -237,6 +237,14 @@
       </svg>
     </button>
 
+    <button class="tour-btn" id="tourBtn" aria-label="Ver tutorial">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="10"/>
+        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+        <line x1="12" y1="17" x2="12.01" y2="17"/>
+      </svg>
+    </button>
+
     <div class="progress-bar">
       <div class="progress-fill" id="progressFill"></div>
     </div>
@@ -258,6 +266,22 @@
     </svg>
     <span class="rotate-hint-text">Para a melhor experiência, gire o celular na horizontal</span>
     <button class="rotate-hint-close" id="rotateHintClose" aria-label="Fechar">×</button>
+  </div>
+
+  <div class="tour" id="tour" aria-hidden="true">
+    <div class="tour-spotlight" id="tourSpotlight"></div>
+    <div class="tour-tooltip" id="tourTooltip" role="dialog" aria-modal="true">
+      <span class="tour-step" id="tourStep">1 / 7</span>
+      <h3 class="tour-title" id="tourTitle"></h3>
+      <p class="tour-text" id="tourText"></p>
+      <div class="tour-actions">
+        <button class="tour-skip" id="tourSkip">Pular</button>
+        <div class="tour-nav-group">
+          <button class="tour-prev" id="tourPrev" aria-label="Anterior">‹</button>
+          <button class="tour-next" id="tourNext">Próximo</button>
+        </div>
+      </div>
+    </div>
   </div>
 
   <div class="modal" id="modal" aria-hidden="true">
