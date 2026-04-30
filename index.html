@@ -175,11 +175,12 @@
       border-radius: 99px;
     }
     .hero h1 {
-      font-size: clamp(30px, 4vw, 46px);
+      font-size: clamp(26px, 3.4vw, 44px);
       font-weight: 800;
       letter-spacing: -0.02em;
       line-height: 1.15;
-      max-width: 800px;
+      max-width: none;
+      white-space: nowrap;
     }
     .hero h1 strong { color: var(--red); }
     .hero p {
@@ -505,6 +506,7 @@
       .nav-logo img { height: 30px; }
       .hero { padding: 50px 0 70px; }
       .hero-logo { width: 280px; }
+      .hero h1 { white-space: normal; font-size: clamp(26px, 6.5vw, 34px); }
       section.block { padding: 60px 0; }
       .sobre-grid { grid-template-columns: 1fr; max-width: 360px; }
       .areas-grid { grid-template-columns: 1fr; }
@@ -545,7 +547,7 @@
       <div class="container hero-inner">
         <img class="hero-logo" src="img/logo.png" alt="Aracaju Comércio e Serviços">
         <span class="hero-tag">Desde 1992 · Santa Catarina</span>
-        <h1>Tradição que <strong>constrói</strong>. Técnica que <strong>protege</strong>.</h1>
+        <h1>Qualidade <strong>técnica</strong>. Compromisso <strong>ambiental</strong>.</h1>
         <p>Manutenção predial, construção civil, controle de pragas e atendimento a licitações públicas.</p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="#material-tecnico">Acessar material técnico</a>
