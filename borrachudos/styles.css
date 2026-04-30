@@ -286,6 +286,7 @@ table {
 .home-btn::after,
 .fullscreen-btn::after,
 .helper-btn::after,
+.audio-btn::after,
 .tour-btn::after {
   content: attr(aria-label);
   position: absolute;
@@ -314,6 +315,7 @@ table {
 .home-btn::before,
 .fullscreen-btn::before,
 .helper-btn::before,
+.audio-btn::before,
 .tour-btn::before {
   content: "";
   position: absolute;
@@ -337,6 +339,8 @@ table {
 .fullscreen-btn:focus-visible::after,
 .helper-btn:hover::after,
 .helper-btn:focus-visible::after,
+.audio-btn:hover::after,
+.audio-btn:focus-visible::after,
 .tour-btn:hover::after,
 .tour-btn:focus-visible::after {
   opacity: 1;
@@ -351,6 +355,8 @@ table {
 .fullscreen-btn:focus-visible::before,
 .helper-btn:hover::before,
 .helper-btn:focus-visible::before,
+.audio-btn:hover::before,
+.audio-btn:focus-visible::before,
 .tour-btn:hover::before,
 .tour-btn:focus-visible::before {
   opacity: 1;
@@ -454,10 +460,63 @@ table {
   height: 20px;
 }
 
+/* === AUDIO BUTTON === */
+.audio-btn {
+  position: absolute;
+  top: calc(192px + env(safe-area-inset-top));
+  left: calc(24px + env(safe-area-inset-left));
+  width: 42px;
+  height: 42px;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #fff;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  transition: all 0.2s ease;
+  opacity: 0;
+}
+
+.material-viewer:hover .audio-btn {
+  opacity: 1;
+}
+
+.audio-btn:hover,
+.audio-btn[aria-pressed="true"] {
+  background: rgba(74, 222, 128, 0.18);
+  border-color: rgba(74, 222, 128, 0.38);
+}
+
+.audio-btn svg {
+  width: 20px;
+  height: 20px;
+}
+
+.audio-icon-stop {
+  display: none;
+}
+
+.audio-btn[aria-pressed="true"] .audio-icon-play {
+  display: none;
+}
+
+.audio-btn[aria-pressed="true"] .audio-icon-stop {
+  display: block;
+}
+
+.audio-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.35 !important;
+}
+
 /* === TOUR BUTTON === */
 .tour-btn {
   position: absolute;
-  top: calc(192px + env(safe-area-inset-top));
+  top: calc(248px + env(safe-area-inset-top));
   left: calc(24px + env(safe-area-inset-left));
   width: 42px;
   height: 42px;
@@ -681,6 +740,7 @@ table {
 .material-viewer.tour-active .dots,
 .material-viewer.tour-active .fullscreen-btn,
 .material-viewer.tour-active .helper-btn,
+.material-viewer.tour-active .audio-btn,
 .material-viewer.tour-active .tour-btn,
 .material-viewer.tour-active .home-btn {
   opacity: 1 !important;
@@ -955,7 +1015,8 @@ table {
   .fullscreen-btn { top: calc(68px + env(safe-area-inset-top)); left: calc(16px + env(safe-area-inset-left)); }
   .dots { opacity: 0.6; bottom: calc(52px + env(safe-area-inset-bottom)); }
   .helper-btn { top: calc(120px + env(safe-area-inset-top)); left: calc(16px + env(safe-area-inset-left)); }
-  .tour-btn { top: calc(172px + env(safe-area-inset-top)); left: calc(16px + env(safe-area-inset-left)); }
+  .audio-btn { top: calc(172px + env(safe-area-inset-top)); left: calc(16px + env(safe-area-inset-left)); }
+  .tour-btn { top: calc(224px + env(safe-area-inset-top)); left: calc(16px + env(safe-area-inset-left)); }
   .home-btn { top: calc(16px + env(safe-area-inset-top)); left: calc(16px + env(safe-area-inset-left)); }
   .site-footer {
     font-size: 10px;

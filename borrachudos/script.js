@@ -314,6 +314,7 @@
   const nextBtn = document.getElementById('nextBtn');
   const fullscreenBtn = document.getElementById('fullscreenBtn');
   const helperBtn = document.getElementById('helperBtn');
+  const audioBtn = document.getElementById('audioBtn');
   const currentEl = document.getElementById('currentPage');
   const totalEl = document.getElementById('totalPages');
   const progressFill = document.getElementById('progressFill');
@@ -343,6 +344,7 @@
   /* ============ NAVIGATION ============ */
   function goTo(index) {
     if (index < 0 || index >= total || index === current) return;
+    stopReading();
     pages[current].classList.remove('active');
     dots[current].classList.remove('active');
     current = index;
@@ -415,9 +417,79 @@
   }
   fullscreenBtn.addEventListener('click', toggleFullscreen);
 
+  /* ============ TEXT TO SPEECH ============ */
+  const canSpeak = 'speechSynthesis' in window && 'SpeechSynthesisUtterance' in window;
+  let activeUtterance = null;
+
+  function htmlToReadableText(html) {
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(html, 'text/html');
+    return doc.body.textContent.replace(/\s+/g, ' ').trim();
+  }
+
+  function getCurrentReadableText() {
+    const data = pageTexts[current];
+    if (!data) return '';
+    return data.title + '. ' + htmlToReadableText(data.body);
+  }
+
+  function setReadingState(isReading) {
+    audioBtn.setAttribute('aria-pressed', String(isReading));
+    audioBtn.setAttribute('aria-label', isReading ? 'Parar leitura' : 'Ler página em voz alta');
+  }
+
+  function stopReading() {
+    if (!canSpeak) return;
+    window.speechSynthesis.cancel();
+    activeUtterance = null;
+    setReadingState(false);
+  }
+
+  function startReading() {
+    if (!canSpeak) return;
+
+    const text = getCurrentReadableText();
+    if (!text) return;
+
+    window.speechSynthesis.cancel();
+    activeUtterance = new SpeechSynthesisUtterance(text);
+    activeUtterance.lang = 'pt-BR';
+    activeUtterance.rate = 0.92;
+    activeUtterance.pitch = 1;
+    activeUtterance.onend = () => {
+      activeUtterance = null;
+      setReadingState(false);
+    };
+    activeUtterance.onerror = () => {
+      activeUtterance = null;
+      setReadingState(false);
+    };
+
+    setReadingState(true);
+    window.speechSynthesis.speak(activeUtterance);
+  }
+
+  function toggleReading() {
+    if (!canSpeak) return;
+
+    if (window.speechSynthesis.speaking || activeUtterance) {
+      stopReading();
+    } else {
+      startReading();
+    }
+  }
+
+  if (canSpeak) {
+    audioBtn.addEventListener('click', toggleReading);
+    window.addEventListener('beforeunload', stopReading);
+  } else {
+    audioBtn.disabled = true;
+    audioBtn.setAttribute('aria-label', 'Leitura em voz alta indisponível');
+  }
+
   /* ============ CLICK ZONES ============ */
   document.querySelector('.pages').addEventListener('click', (e) => {
-    if (e.target.closest('.nav-btn, .fullscreen-btn, .helper-btn, .dot, .counter, .modal')) return;
+    if (e.target.closest('.nav-btn, .fullscreen-btn, .helper-btn, .audio-btn, .dot, .counter, .modal')) return;
     const x = e.clientX;
     const w = window.innerWidth;
     if (x < w / 2) prev();
@@ -518,6 +590,12 @@
       target: '.helper-btn',
       title: 'Informações',
       text: 'Abre um painel com todo o conteúdo escrito da página atual. Atalho: H.',
+      placement: 'right'
+    },
+    {
+      target: '.audio-btn',
+      title: 'Leitura em voz alta',
+      text: 'Lê o conteúdo da página atual usando a voz do navegador. Clique novamente para parar.',
       placement: 'right'
     },
     {

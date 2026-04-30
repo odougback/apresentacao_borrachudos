@@ -1,4 +1,4 @@
-const CACHE_NAME = 'borrachudos-v7';
+const CACHE_NAME = 'borrachudos-v8';
 
 const ASSETS = [
   './',
