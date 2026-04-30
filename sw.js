@@ -1,4 +1,4 @@
-const CACHE_NAME = 'aracaju-v2';
+const CACHE_NAME = 'aracaju-v3';
 
 const ASSETS = [
   './',
@@ -38,20 +38,40 @@ self.addEventListener('fetch', (event) => {
   // Don't intercept the borrachudos sub-app (it has its own service worker)
   if (url.pathname.startsWith('/borrachudos/')) return;
 
-  event.respondWith(
-    caches.match(event.request).then((cached) => {
-      if (cached) return cached;
+  const isHTML =
+    event.request.mode === 'navigate' ||
+    (event.request.headers.get('accept') || '').includes('text/html');
 
-      return fetch(event.request)
+  if (isHTML) {
+    // Network-first: sempre busca a versão atualizada do HTML.
+    // Se offline, cai pro cache; se nem isso, devolve o index.html.
+    event.respondWith(
+      fetch(event.request)
         .then((response) => {
-          if (!response || response.status !== 200 || response.type !== 'basic') {
-            return response;
-          }
           const copy = response.clone();
           caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copy));
           return response;
         })
-        .catch(() => caches.match('./index.html'));
+        .catch(() =>
+          caches.match(event.request).then((cached) => cached || caches.match('./index.html'))
+        )
+    );
+    return;
+  }
+
+  // Demais assets (img/css/js): cache-first.
+  event.respondWith(
+    caches.match(event.request).then((cached) => {
+      if (cached) return cached;
+
+      return fetch(event.request).then((response) => {
+        if (!response || response.status !== 200 || response.type !== 'basic') {
+          return response;
+        }
+        const copy = response.clone();
+        caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copy));
+        return response;
+      });
     })
   );
 });
