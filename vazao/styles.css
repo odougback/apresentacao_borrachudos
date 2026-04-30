@@ -343,6 +343,81 @@ button { font-family: inherit; cursor: pointer; border: 0; background: transpare
   font-size: 0.85em;
 }
 
+/* === RIVER DIAGRAM (SVG) === */
+.river-diagram {
+  margin: 28px 0 18px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+}
+.river-diagram svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.diagram-divider {
+  background: var(--bg-soft);
+  padding: 10px 22px;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--red);
+  text-align: center;
+}
+.diagram-summary {
+  background: var(--bg-soft);
+  padding: 16px 22px;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  display: grid;
+  gap: 6px;
+}
+.ds-row {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 14px;
+  align-items: baseline;
+  font-size: 13.5px;
+  font-variant-numeric: tabular-nums;
+}
+.ds-label {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--red);
+  white-space: nowrap;
+}
+.ds-value {
+  color: var(--ink);
+}
+.ds-value strong {
+  color: var(--red-dark);
+  font-weight: 800;
+}
+.river-diagram figcaption {
+  padding: 12px 22px;
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 500;
+  text-align: center;
+  background: #fff;
+}
+.river-diagram figcaption strong {
+  color: var(--ink);
+  font-weight: 700;
+}
+
+@media (max-width: 600px) {
+  .ds-row { grid-template-columns: 1fr; gap: 2px; }
+  .diagram-summary { padding: 14px 16px; }
+}
+
 /* === FIGURE === */
 .fig {
   margin: 24px 0 12px;

@@ -160,6 +160,134 @@
           <p>Para isso, recomenda-se medir a largura do córrego em intervalos regulares de 1 metro, totalizando múltiplos pontos de amostragem ao longo do trecho selecionado. Essas medições devem ser realizadas de margem a margem, em seções perpendiculares ao fluxo da água, buscando representar fielmente as variações do canal.</p>
           <p>Após a coleta dos dados, os valores obtidos devem ser somados e divididos pelo número total de medições realizadas, resultando na largura média do curso d'água, expressa em metros.</p>
           <p>Esse parâmetro é fundamental para o cálculo da vazão, sendo diretamente proporcional ao volume de água transportado no trecho avaliado e, consequentemente, ao dimensionamento da dose de larvicida a ser aplicada.</p>
+
+          <figure class="river-diagram">
+            <svg viewBox="0 0 800 340" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagrama de determinação da largura média de um curso d'água com 10 medições perpendiculares ao fluxo">
+              <defs>
+                <marker id="arrow-w" markerWidth="9" markerHeight="9" refX="4.5" refY="4.5" orient="auto-start-reverse">
+                  <path d="M 0 0 L 9 4.5 L 0 9 Z" fill="#c8392f"/>
+                </marker>
+                <pattern id="waves-w" x="0" y="0" width="60" height="20" patternUnits="userSpaceOnUse">
+                  <path d="M0 10 Q 15 4 30 10 T 60 10" stroke="#7eb8d4" stroke-width="1.2" fill="none" opacity="0.55"/>
+                </pattern>
+              </defs>
+
+              <!-- Water -->
+              <rect x="0" y="0" width="800" height="340" fill="#bde0f0"/>
+              <rect x="0" y="0" width="800" height="340" fill="url(#waves-w)"/>
+
+              <!-- Top bank -->
+              <path d="M 0 0 L 800 0 L 800 122 L 752 122 L 674 118 L 596 112 L 518 105 L 440 106 L 362 103 L 284 113 L 206 107 L 128 88 L 50 82 L 0 82 Z" fill="#9cb88a"/>
+              <path d="M 0 80 Q 25 78 50 82 L 128 88 L 206 107 L 284 113 L 362 103 L 440 106 L 518 105 L 596 112 L 674 118 L 752 122 L 800 124" stroke="#6f8a5d" stroke-width="1.5" fill="none" opacity="0.6"/>
+
+              <!-- Bottom bank -->
+              <path d="M 0 340 L 800 340 L 800 218 L 752 218 L 674 222 L 596 228 L 518 235 L 440 234 L 362 237 L 284 227 L 206 233 L 128 252 L 50 258 L 0 258 Z" fill="#9cb88a"/>
+              <path d="M 0 260 Q 25 258 50 258 L 128 252 L 206 233 L 284 227 L 362 237 L 440 234 L 518 235 L 596 228 L 674 222 L 752 218 L 800 216" stroke="#6f8a5d" stroke-width="1.5" fill="none" opacity="0.6"/>
+
+
+              <!-- Spacing label between sections -->
+              <g font-family="Inter, sans-serif" font-size="9" font-weight="600" fill="#1a1414">
+                <text x="89" y="54" text-anchor="middle" opacity="0.5">1 m</text>
+                <text x="167" y="54" text-anchor="middle" opacity="0.5">1 m</text>
+                <text x="245" y="54" text-anchor="middle" opacity="0.5">1 m</text>
+                <text x="323" y="54" text-anchor="middle" opacity="0.5">1 m</text>
+                <text x="401" y="54" text-anchor="middle" opacity="0.5">1 m</text>
+                <text x="479" y="54" text-anchor="middle" opacity="0.5">1 m</text>
+                <text x="557" y="54" text-anchor="middle" opacity="0.5">1 m</text>
+                <text x="635" y="54" text-anchor="middle" opacity="0.5">1 m</text>
+                <text x="713" y="54" text-anchor="middle" opacity="0.5">1 m</text>
+              </g>
+
+              <!-- Measurement lines (vertical, perpendicular to flow) -->
+              <g stroke="#c8392f" stroke-width="2.5" marker-start="url(#arrow-w)" marker-end="url(#arrow-w)">
+                <line x1="50"  y1="82"  x2="50"  y2="258" />
+                <line x1="128" y1="88"  x2="128" y2="252" />
+                <line x1="206" y1="107" x2="206" y2="233" />
+                <line x1="284" y1="113" x2="284" y2="227" />
+                <line x1="362" y1="103" x2="362" y2="237" />
+                <line x1="440" y1="106" x2="440" y2="234" />
+                <line x1="518" y1="105" x2="518" y2="235" />
+                <line x1="596" y1="112" x2="596" y2="228" />
+                <line x1="674" y1="118" x2="674" y2="222" />
+                <line x1="752" y1="122" x2="752" y2="218" />
+              </g>
+
+              <!-- Flow direction badge (inside water, between sections 9 and 10) -->
+              <g transform="translate(716, 145)">
+                <rect x="-32" y="-71" width="64" height="22" rx="11" fill="#1a1414"/>
+                <text x="0" y="-60" fill="#fff" font-family="Inter, sans-serif" font-size="10" font-weight="700" letter-spacing="1.5" text-anchor="middle" dominant-baseline="middle">FLUXO →</text>
+              </g>
+
+              <!-- Section number badges -->
+              <g font-family="Inter, sans-serif" font-size="11" font-weight="800" text-anchor="middle">
+                <g fill="#c8392f">
+                  <circle cx="50"  cy="22" r="13"/>
+                  <circle cx="128" cy="22" r="13"/>
+                  <circle cx="206" cy="22" r="13"/>
+                  <circle cx="284" cy="22" r="13"/>
+                  <circle cx="362" cy="22" r="13"/>
+                  <circle cx="440" cy="22" r="13"/>
+                  <circle cx="518" cy="22" r="13"/>
+                  <circle cx="596" cy="22" r="13"/>
+                  <circle cx="674" cy="22" r="13"/>
+                  <circle cx="752" cy="22" r="13"/>
+                </g>
+                <g fill="#fff">
+                  <text x="50"  y="22" dy="0.36em">1</text>
+                  <text x="128" y="22" dy="0.36em">2</text>
+                  <text x="206" y="22" dy="0.36em">3</text>
+                  <text x="284" y="22" dy="0.36em">4</text>
+                  <text x="362" y="22" dy="0.36em">5</text>
+                  <text x="440" y="22" dy="0.36em">6</text>
+                  <text x="518" y="22" dy="0.36em">7</text>
+                  <text x="596" y="22" dy="0.36em">8</text>
+                  <text x="674" y="22" dy="0.36em">9</text>
+                  <text x="752" y="22" dy="0.36em">10</text>
+                </g>
+              </g>
+
+              <!-- Width values (cm) below -->
+              <g font-family="Inter, sans-serif" font-size="11" font-weight="800" text-anchor="middle">
+                <g>
+                  <rect x="32"  y="305" width="36" height="22" rx="4" fill="#1a1414"/>
+                  <rect x="110" y="305" width="36" height="22" rx="4" fill="#1a1414"/>
+                  <rect x="188" y="305" width="36" height="22" rx="4" fill="#1a1414"/>
+                  <rect x="266" y="305" width="36" height="22" rx="4" fill="#1a1414"/>
+                  <rect x="344" y="305" width="36" height="22" rx="4" fill="#1a1414"/>
+                  <rect x="422" y="305" width="36" height="22" rx="4" fill="#1a1414"/>
+                  <rect x="500" y="305" width="36" height="22" rx="4" fill="#1a1414"/>
+                  <rect x="578" y="305" width="36" height="22" rx="4" fill="#1a1414"/>
+                  <rect x="656" y="305" width="36" height="22" rx="4" fill="#1a1414"/>
+                  <rect x="734" y="305" width="36" height="22" rx="4" fill="#1a1414"/>
+                </g>
+                <g fill="#fff">
+                  <text x="50"  y="316" dy="0.36em">183</text>
+                  <text x="128" y="316" dy="0.36em">170</text>
+                  <text x="206" y="316" dy="0.36em">125</text>
+                  <text x="284" y="316" dy="0.36em">113</text>
+                  <text x="362" y="316" dy="0.36em">135</text>
+                  <text x="440" y="316" dy="0.36em">127</text>
+                  <text x="518" y="316" dy="0.36em">130</text>
+                  <text x="596" y="316" dy="0.36em">115</text>
+                  <text x="674" y="316" dy="0.36em">100</text>
+                  <text x="752" y="316" dy="0.36em">90</text>
+                </g>
+              </g>
+            </svg>
+
+            <div class="diagram-summary">
+              <div class="ds-row">
+                <span class="ds-label">Soma</span>
+                <span class="ds-value">183 + 170 + 125 + 113 + 135 + 127 + 130 + 115 + 100 + 90 = <strong>1.288 cm</strong></span>
+              </div>
+              <div class="ds-row">
+                <span class="ds-label">Média</span>
+                <span class="ds-value">1.288 ÷ 10 = 128,8 cm = <strong>1,288 m</strong></span>
+              </div>
+            </div>
+
+            <figcaption><strong>Figura 1</strong> — Determinação da largura média: 10 medições perpendiculares ao fluxo, espaçadas a cada 1 metro. Larguras expressas em centímetros.</figcaption>
+          </figure>
         </section>
 
         <!-- 2.2.2 -->
@@ -170,6 +298,226 @@
           <p>As medições devem ser executadas de maneira uniforme ao longo de todas as seções, contemplando tanto regiões mais rasas quanto mais profundas, evitando distorções no resultado final.</p>
           <p>Após a coleta dos dados, todos os valores de profundidade obtidos devem ser somados e divididos pelo número total de medições realizadas, resultando na profundidade média do curso d'água, expressa em metros.</p>
           <p>Esse parâmetro, associado à largura média e à velocidade da corrente, é fundamental para o cálculo da vazão e, consequentemente, para o correto dimensionamento da dose de larvicida a ser aplicada.</p>
+
+          <figure class="river-diagram">
+            <!-- ===================== TOP-DOWN VIEW ===================== -->
+            <svg viewBox="0 0 800 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Vista superior do curso d'água com 30 pontos de medição de profundidade (3 por seção: esquerda, centro e direita) ao longo de 10 seções">
+              <defs>
+                <pattern id="waves-p" x="0" y="0" width="60" height="20" patternUnits="userSpaceOnUse">
+                  <path d="M0 10 Q 15 4 30 10 T 60 10" stroke="#7eb8d4" stroke-width="1.2" fill="none" opacity="0.55"/>
+                </pattern>
+              </defs>
+
+              <!-- Water -->
+              <rect x="0" y="0" width="800" height="360" fill="#bde0f0"/>
+              <rect x="0" y="0" width="800" height="360" fill="url(#waves-p)"/>
+
+              <!-- Top bank -->
+              <path d="M 0 0 L 800 0 L 800 142 L 752 142 L 674 138 L 596 132 L 518 125 L 440 126 L 362 123 L 284 133 L 206 127 L 128 108 L 50 102 L 0 102 Z" fill="#9cb88a"/>
+              <path d="M 0 100 Q 25 98 50 102 L 128 108 L 206 127 L 284 133 L 362 123 L 440 126 L 518 125 L 596 132 L 674 138 L 752 142 L 800 144" stroke="#6f8a5d" stroke-width="1.5" fill="none" opacity="0.6"/>
+
+              <!-- Bottom bank -->
+              <path d="M 0 360 L 800 360 L 800 238 L 752 238 L 674 242 L 596 248 L 518 255 L 440 254 L 362 257 L 284 247 L 206 253 L 128 272 L 50 278 L 0 278 Z" fill="#9cb88a"/>
+              <path d="M 0 280 Q 25 278 50 278 L 128 272 L 206 253 L 284 247 L 362 257 L 440 254 L 518 255 L 596 248 L 674 242 L 752 238 L 800 236" stroke="#6f8a5d" stroke-width="1.5" fill="none" opacity="0.6"/>
+
+              <!-- Spacing label between sections -->
+              <g font-family="Inter, sans-serif" font-size="9" font-weight="600" fill="#1a1414">
+                <text x="89" y="74" text-anchor="middle" opacity="0.5">1 m</text>
+                <text x="167" y="74" text-anchor="middle" opacity="0.5">1 m</text>
+                <text x="245" y="74" text-anchor="middle" opacity="0.5">1 m</text>
+                <text x="323" y="74" text-anchor="middle" opacity="0.5">1 m</text>
+                <text x="401" y="74" text-anchor="middle" opacity="0.5">1 m</text>
+                <text x="479" y="74" text-anchor="middle" opacity="0.5">1 m</text>
+                <text x="557" y="74" text-anchor="middle" opacity="0.5">1 m</text>
+                <text x="635" y="74" text-anchor="middle" opacity="0.5">1 m</text>
+                <text x="713" y="74" text-anchor="middle" opacity="0.5">1 m</text>
+              </g>
+
+              <!-- Measurement points (3 dots per section) -->
+              <!-- Pe (margem esquerda) — yellow -->
+              <g fill="#f59e0b" stroke="#fff" stroke-width="2">
+                <circle cx="50"  cy="146" r="6"/>
+                <circle cx="128" cy="149" r="6"/>
+                <circle cx="206" cy="159" r="6"/>
+                <circle cx="284" cy="161" r="6"/>
+                <circle cx="362" cy="157" r="6"/>
+                <circle cx="440" cy="158" r="6"/>
+                <circle cx="518" cy="158" r="6"/>
+                <circle cx="596" cy="161" r="6"/>
+                <circle cx="674" cy="164" r="6"/>
+                <circle cx="752" cy="166" r="6"/>
+              </g>
+
+              <!-- Pc (centro) — Aracaju red -->
+              <g fill="#c8392f" stroke="#fff" stroke-width="2">
+                <circle cx="50"  cy="190" r="6"/>
+                <circle cx="128" cy="190" r="6"/>
+                <circle cx="206" cy="190" r="6"/>
+                <circle cx="284" cy="190" r="6"/>
+                <circle cx="362" cy="190" r="6"/>
+                <circle cx="440" cy="190" r="6"/>
+                <circle cx="518" cy="190" r="6"/>
+                <circle cx="596" cy="190" r="6"/>
+                <circle cx="674" cy="190" r="6"/>
+                <circle cx="752" cy="190" r="6"/>
+              </g>
+
+              <!-- Pd (margem direita) — blue -->
+              <g fill="#2c7da0" stroke="#fff" stroke-width="2">
+                <circle cx="50"  cy="234" r="6"/>
+                <circle cx="128" cy="231" r="6"/>
+                <circle cx="206" cy="221" r="6"/>
+                <circle cx="284" cy="219" r="6"/>
+                <circle cx="362" cy="223" r="6"/>
+                <circle cx="440" cy="222" r="6"/>
+                <circle cx="518" cy="222" r="6"/>
+                <circle cx="596" cy="219" r="6"/>
+                <circle cx="674" cy="216" r="6"/>
+                <circle cx="752" cy="214" r="6"/>
+              </g>
+
+              <!-- Section number badges -->
+              <g font-family="Inter, sans-serif" font-size="11" font-weight="800" text-anchor="middle">
+                <g fill="#c8392f">
+                  <circle cx="50"  cy="42" r="13"/>
+                  <circle cx="128" cy="42" r="13"/>
+                  <circle cx="206" cy="42" r="13"/>
+                  <circle cx="284" cy="42" r="13"/>
+                  <circle cx="362" cy="42" r="13"/>
+                  <circle cx="440" cy="42" r="13"/>
+                  <circle cx="518" cy="42" r="13"/>
+                  <circle cx="596" cy="42" r="13"/>
+                  <circle cx="674" cy="42" r="13"/>
+                  <circle cx="752" cy="42" r="13"/>
+                </g>
+                <g fill="#fff">
+                  <text x="50"  y="42" dy="0.36em">1</text>
+                  <text x="128" y="42" dy="0.36em">2</text>
+                  <text x="206" y="42" dy="0.36em">3</text>
+                  <text x="284" y="42" dy="0.36em">4</text>
+                  <text x="362" y="42" dy="0.36em">5</text>
+                  <text x="440" y="42" dy="0.36em">6</text>
+                  <text x="518" y="42" dy="0.36em">7</text>
+                  <text x="596" y="42" dy="0.36em">8</text>
+                  <text x="674" y="42" dy="0.36em">9</text>
+                  <text x="752" y="42" dy="0.36em">10</text>
+                </g>
+              </g>
+
+              <!-- Legend (top right inside top bank) -->
+              <g transform="translate(540, 20)" font-family="Inter, sans-serif" font-size="10" font-weight="700">
+                <rect x="-8" y="-12" width="220" height="22" rx="11" fill="#1a1414" opacity="0.85"/>
+                <circle cx="6" cy="-1" r="5" fill="#f59e0b" stroke="#fff" stroke-width="1.5"/>
+                <text x="18" y="-1" fill="#fff" dominant-baseline="middle">Pe</text>
+                <circle cx="78" cy="-1" r="5" fill="#c8392f" stroke="#fff" stroke-width="1.5"/>
+                <text x="90" y="-1" fill="#fff" dominant-baseline="middle">Pc</text>
+                <circle cx="146" cy="-1" r="5" fill="#2c7da0" stroke="#fff" stroke-width="1.5"/>
+                <text x="158" y="-1" fill="#fff" dominant-baseline="middle">Pd</text>
+              </g>
+
+              <!-- Flow direction badge (between sections 5 and 6, between Pe and Pc rows) -->
+              <g transform="translate(401, 178)">
+                <rect x="-32" y="-11" width="64" height="22" rx="11" fill="#1a1414"/>
+                <text x="0" y="0" fill="#fff" font-family="Inter, sans-serif" font-size="10" font-weight="700" letter-spacing="1.5" text-anchor="middle" dominant-baseline="middle">FLUXO →</text>
+              </g>
+            </svg>
+
+            <!-- ===================== CROSS SECTION VIEW ===================== -->
+            <div class="diagram-divider">
+              <span>Vista em corte (seção transversal) — exemplo da seção 4</span>
+            </div>
+
+            <svg viewBox="0 0 800 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Vista em corte da seção transversal mostrando as 3 medições de profundidade: margem esquerda (Pe), centro (Pc) e margem direita (Pd)">
+              <defs>
+                <pattern id="waves-cross" x="0" y="0" width="60" height="20" patternUnits="userSpaceOnUse">
+                  <path d="M0 10 Q 15 4 30 10 T 60 10" stroke="#7eb8d4" stroke-width="1.2" fill="none" opacity="0.55"/>
+                </pattern>
+                <pattern id="soil" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+                  <rect width="20" height="20" fill="#a07a4f"/>
+                  <circle cx="5" cy="6" r="0.8" fill="#7e5b35" opacity="0.6"/>
+                  <circle cx="14" cy="12" r="0.8" fill="#7e5b35" opacity="0.6"/>
+                  <circle cx="9" cy="16" r="0.8" fill="#7e5b35" opacity="0.6"/>
+                </pattern>
+              </defs>
+
+              <!-- Sky / air above water -->
+              <rect x="0" y="0" width="800" height="60" fill="#fafafa"/>
+
+              <!-- Soil base (everything below water surface) -->
+              <rect x="0" y="60" width="800" height="180" fill="url(#soil)"/>
+
+              <!-- Water U-shape (bed proportional to depths: Pe=10cm at x=180, Pc=28cm at x=400, Pd=10cm at x=620) -->
+              <path d="M 60 60 L 740 60 Q 680 65 620 90 Q 510 130 400 144 Q 290 130 180 90 Q 120 65 60 60 Z" fill="#bde0f0"/>
+              <path d="M 60 60 L 740 60 Q 680 65 620 90 Q 510 130 400 144 Q 290 130 180 90 Q 120 65 60 60 Z" fill="url(#waves-cross)"/>
+
+              <!-- Water surface line -->
+              <line x1="60" y1="60" x2="740" y2="60" stroke="#7eb8d4" stroke-width="1.5"/>
+
+              <!-- Left bank (only at the side, not across the top) -->
+              <path d="M 0 0 L 200 0 Q 130 30 60 60 L 0 60 Z" fill="#9cb88a"/>
+              <path d="M 200 0 Q 130 30 60 60" stroke="#6f8a5d" stroke-width="1.5" fill="none" opacity="0.6"/>
+
+              <!-- Right bank (mirror) -->
+              <path d="M 800 0 L 600 0 Q 670 30 740 60 L 800 60 Z" fill="#9cb88a"/>
+              <path d="M 600 0 Q 670 30 740 60" stroke="#6f8a5d" stroke-width="1.5" fill="none" opacity="0.6"/>
+
+              <!-- Surface labels -->
+              <g font-family="Inter, sans-serif" font-size="10" font-weight="600">
+                <text x="50" y="20" fill="#3d5733" text-anchor="middle">Margem esquerda</text>
+                <text x="750" y="20" fill="#3d5733" text-anchor="middle">Margem direita</text>
+                <text x="400" y="32" fill="#1a1414" text-anchor="middle" font-weight="700">Superfície da água</text>
+              </g>
+
+              <!-- Pe (margem esquerda) — bed at y=90 -->
+              <g stroke="#f59e0b" stroke-width="2.5" stroke-dasharray="3 3">
+                <line x1="180" y1="60" x2="180" y2="85"/>
+              </g>
+              <circle cx="180" cy="60" r="5" fill="#f59e0b" stroke="#fff" stroke-width="2"/>
+              <polygon points="180,90 175,80 185,80" fill="#f59e0b"/>
+              <g transform="translate(180, 125)" font-family="Inter, sans-serif" text-anchor="middle">
+                <rect x="-30" y="-12" width="60" height="34" rx="6" fill="#f59e0b"/>
+                <text x="0" y="-2" fill="#fff" font-size="9" font-weight="700" letter-spacing="0.5">Pe</text>
+                <text x="0" y="14" fill="#fff" font-size="13" font-weight="800">10 cm</text>
+              </g>
+
+              <!-- Pc (centro) — bed at y=144 -->
+              <g stroke="#c8392f" stroke-width="2.5" stroke-dasharray="3 3">
+                <line x1="400" y1="60" x2="400" y2="139"/>
+              </g>
+              <circle cx="400" cy="60" r="5" fill="#c8392f" stroke="#fff" stroke-width="2"/>
+              <polygon points="400,144 395,134 405,134" fill="#c8392f"/>
+              <g transform="translate(400, 178)" font-family="Inter, sans-serif" text-anchor="middle">
+                <rect x="-30" y="-12" width="60" height="34" rx="6" fill="#c8392f"/>
+                <text x="0" y="-2" fill="#fff" font-size="9" font-weight="700" letter-spacing="0.5">Pc</text>
+                <text x="0" y="14" fill="#fff" font-size="13" font-weight="800">28 cm</text>
+              </g>
+
+              <!-- Pd (margem direita) — bed at y=90 -->
+              <g stroke="#2c7da0" stroke-width="2.5" stroke-dasharray="3 3">
+                <line x1="620" y1="60" x2="620" y2="85"/>
+              </g>
+              <circle cx="620" cy="60" r="5" fill="#2c7da0" stroke="#fff" stroke-width="2"/>
+              <polygon points="620,90 615,80 625,80" fill="#2c7da0"/>
+              <g transform="translate(620, 125)" font-family="Inter, sans-serif" text-anchor="middle">
+                <rect x="-30" y="-12" width="60" height="34" rx="6" fill="#2c7da0"/>
+                <text x="0" y="-2" fill="#fff" font-size="9" font-weight="700" letter-spacing="0.5">Pd</text>
+                <text x="0" y="14" fill="#fff" font-size="13" font-weight="800">10 cm</text>
+              </g>
+            </svg>
+
+            <div class="diagram-summary">
+              <div class="ds-row">
+                <span class="ds-label">Soma</span>
+                <span class="ds-value">Σ Pe (107 cm) + Σ Pc (219 cm) + Σ Pd (104 cm) = <strong>430 cm</strong></span>
+              </div>
+              <div class="ds-row">
+                <span class="ds-label">Média</span>
+                <span class="ds-value">430 ÷ 30 medições = 14,33 cm = <strong>0,1433 m</strong></span>
+              </div>
+            </div>
+
+            <figcaption><strong>Figura 2</strong> — Determinação da profundidade média: 3 medições por seção (esquerda, centro, direita) ao longo de 10 seções, totalizando 30 pontos. Profundidades expressas em centímetros.</figcaption>
+          </figure>
         </section>
 
         <!-- 2.2.3 -->
@@ -190,6 +538,99 @@
           </div>
 
           <p>A correta determinação da velocidade é fundamental para o cálculo da vazão, influenciando diretamente o dimensionamento da dose de larvicida e a eficiência da aplicação.</p>
+
+          <figure class="river-diagram">
+            <svg viewBox="0 0 800 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Vista superior da medição de velocidade superficial: flutuador percorrendo 10 metros do ponto inicial ao ponto final">
+              <defs>
+                <pattern id="waves-v" x="0" y="0" width="60" height="20" patternUnits="userSpaceOnUse">
+                  <path d="M0 10 Q 15 4 30 10 T 60 10" stroke="#7eb8d4" stroke-width="1.2" fill="none" opacity="0.55"/>
+                </pattern>
+              </defs>
+
+              <!-- Water -->
+              <rect x="0" y="0" width="800" height="280" fill="#bde0f0"/>
+              <rect x="0" y="0" width="800" height="280" fill="url(#waves-v)"/>
+
+              <!-- Top bank -->
+              <path d="M 0 0 L 800 0 L 800 95 L 700 90 L 600 92 L 500 88 L 400 95 L 300 90 L 200 88 L 100 92 L 0 88 Z" fill="#9cb88a"/>
+              <path d="M 0 88 Q 50 88 100 92 L 200 88 L 300 90 L 400 95 L 500 88 L 600 92 L 700 90 L 800 95" stroke="#6f8a5d" stroke-width="1.5" fill="none" opacity="0.6"/>
+
+              <!-- Bottom bank -->
+              <path d="M 0 280 L 800 280 L 800 195 L 700 200 L 600 196 L 500 198 L 400 192 L 300 198 L 200 200 L 100 196 L 0 200 Z" fill="#9cb88a"/>
+              <path d="M 0 200 Q 50 200 100 196 L 200 200 L 300 198 L 400 192 L 500 198 L 600 196 L 700 200 L 800 195" stroke="#6f8a5d" stroke-width="1.5" fill="none" opacity="0.6"/>
+
+              <!-- 10m measurement bracket (in water, above trajectory) -->
+              <g stroke="#1a1414" stroke-width="2" fill="none">
+                <line x1="100" y1="120" x2="700" y2="120" stroke-dasharray="6 4"/>
+                <line x1="100" y1="112" x2="100" y2="128"/>
+                <line x1="700" y1="112" x2="700" y2="128"/>
+              </g>
+              <g transform="translate(400, 120)">
+                <rect x="-32" y="-12" width="64" height="24" rx="12" fill="#1a1414"/>
+                <text x="0" y="0" fill="#fff" font-family="Inter, sans-serif" font-size="12" font-weight="800" letter-spacing="1" text-anchor="middle" dominant-baseline="middle">10 m</text>
+              </g>
+
+              <!-- Trajectory line (dashed white) -->
+              <line x1="100" y1="160" x2="700" y2="160" stroke="#fff" stroke-width="2.5" stroke-dasharray="6 6" opacity="0.85"/>
+
+              <!-- Ball motion trail (3 intermediate positions, fading) -->
+              <g stroke="#fff" stroke-width="2.5">
+                <circle cx="250" cy="160" r="6" fill="#f59e0b" opacity="0.4"/>
+                <circle cx="400" cy="160" r="6" fill="#f59e0b" opacity="0.6"/>
+                <circle cx="550" cy="160" r="6" fill="#f59e0b" opacity="0.8"/>
+              </g>
+
+              <!-- Start ball (green) at PONTO INICIAL -->
+              <circle cx="100" cy="160" r="9" fill="#10b981" stroke="#fff" stroke-width="2.5"/>
+
+              <!-- End ball (red) at PONTO FINAL -->
+              <circle cx="700" cy="160" r="9" fill="#c8392f" stroke="#fff" stroke-width="2.5"/>
+
+              <!-- PONTO INICIAL label (green pill in top bank) -->
+              <g transform="translate(100, 38)">
+                <rect x="-58" y="-13" width="116" height="26" rx="13" fill="#10b981"/>
+                <text x="0" y="0" fill="#fff" font-family="Inter, sans-serif" font-size="10" font-weight="800" letter-spacing="0.8" text-anchor="middle" dominant-baseline="middle">PONTO INICIAL</text>
+              </g>
+              <!-- Connector dot under label -->
+              <line x1="100" y1="55" x2="100" y2="148" stroke="#10b981" stroke-width="1.5" stroke-dasharray="3 3" opacity="0.7"/>
+
+              <!-- PONTO FINAL label (red pill in top bank) -->
+              <g transform="translate(700, 38)">
+                <rect x="-52" y="-13" width="104" height="26" rx="13" fill="#c8392f"/>
+                <text x="0" y="0" fill="#fff" font-family="Inter, sans-serif" font-size="10" font-weight="800" letter-spacing="0.8" text-anchor="middle" dominant-baseline="middle">PONTO FINAL</text>
+              </g>
+              <!-- Connector line to end ball -->
+              <line x1="700" y1="55" x2="700" y2="148" stroke="#c8392f" stroke-width="1.5" stroke-dasharray="3 3" opacity="0.7"/>
+
+              <!-- Float object label (between trajectory and bottom bank) -->
+              <g transform="translate(400, 185)" font-family="Inter, sans-serif" text-anchor="middle">
+                <text x="0" y="0" fill="#1a1414" font-size="10" font-weight="600" dominant-baseline="middle" opacity="0.65">Objeto flutuante (ex: bola de ping-pong)</text>
+              </g>
+
+              <!-- FLUXO indicator (in bottom bank) -->
+              <g transform="translate(400, 235)">
+                <rect x="-32" y="-11" width="64" height="22" rx="11" fill="#1a1414"/>
+                <text x="0" y="0" fill="#fff" font-family="Inter, sans-serif" font-size="10" font-weight="700" letter-spacing="1.5" text-anchor="middle" dominant-baseline="middle">FLUXO →</text>
+              </g>
+            </svg>
+
+            <div class="diagram-summary">
+              <div class="ds-row">
+                <span class="ds-label">Tentativas</span>
+                <span class="ds-value">T₁ = 39 s · T₂ = 43 s · T₃ = 40 s</span>
+              </div>
+              <div class="ds-row">
+                <span class="ds-label">Tempo médio</span>
+                <span class="ds-value">(39 + 43 + 40) ÷ 3 = <strong>40,67 s</strong></span>
+              </div>
+              <div class="ds-row">
+                <span class="ds-label">Velocidade</span>
+                <span class="ds-value">V<sub>s</sub> = 10 ÷ 40,67 = <strong>0,25 m/s</strong></span>
+              </div>
+            </div>
+
+            <figcaption><strong>Figura 3</strong> — Determinação da velocidade superficial: cronometragem do tempo que o flutuador percorre uma distância conhecida (10 m). O procedimento é repetido ao menos 3 vezes para obter o tempo médio.</figcaption>
+          </figure>
         </section>
 
         <!-- 2.2.4 -->
@@ -201,7 +642,7 @@
           <div class="formula-card">
             <div class="formula-eq">DOSE = PPM × (600 / TEMPO) × PROFUNDIDADE × LARGURA × C</div>
             <ul class="formula-vars">
-              <li><strong>PPM</strong> = concentração desejada do produto (recomendado 25 ppm)</li>
+              <li><strong>PPM</strong> = concentração padrão do produto (25 ppm)</li>
               <li><strong>TEMPO</strong> = tempo médio de deslocamento do flutuador (em segundos)</li>
               <li><strong>LARGURA</strong> = largura média do curso d'água (m)</li>
               <li><strong>PROFUNDIDADE</strong> = profundidade média do curso d'água (m)</li>
@@ -210,6 +651,123 @@
           </div>
 
           <p>O coeficiente de correção (C) é mantido no cálculo da dose pelas mesmas razões descritas no item 2.2: como o termo <em>(600 / TEMPO)</em> é derivado da velocidade superficial do flutuador, sua aplicação direta superestimaria o volume de água efetivamente escoado na seção. A inclusão de C garante a coerência entre o dimensionamento da dose e a vazão real do trecho, evitando subdosagem ou desperdício de produto.</p>
+
+          <p>A concentração de <strong>25 ppm</strong> é adotada como padrão no dimensionamento da dose para a aplicação de VectoBac® 12AS no controle de simulídeos, parâmetro consolidado pela planilha técnica do fabricante. Aplicando a fórmula com os dados medidos nas seções 2.2.1, 2.2.2 e 2.2.3 (L = 1,288 m; P = 0,1433 m; T = 40,67 s), obtém-se a dose detalhada a seguir:</p>
+
+          <figure class="river-diagram">
+            <svg viewBox="0 0 800 440" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Exemplo do cálculo da dose de larvicida combinando os dados medidos: largura, profundidade, tempo médio e concentração. Resultado: 58 ml.">
+              <defs>
+                <clipPath id="card-clip-d">
+                  <rect width="160" height="110" rx="10"/>
+                </clipPath>
+              </defs>
+
+              <!-- Background -->
+              <rect x="0" y="0" width="800" height="440" fill="#fafbfc"/>
+
+              <!-- Header pill -->
+              <g transform="translate(400, 26)">
+                <rect x="-130" y="-13" width="260" height="26" rx="13" fill="#1a1414"/>
+                <text x="0" y="0" fill="#fff" font-family="Inter, sans-serif" font-size="10" font-weight="800" letter-spacing="1.5" text-anchor="middle" dominant-baseline="middle">EXEMPLO COM OS DADOS MEDIDOS</text>
+              </g>
+
+              <!-- Card 1: LARGURA (orange) -->
+              <g transform="translate(62, 60)">
+                <g clip-path="url(#card-clip-d)">
+                  <rect width="160" height="110" fill="#fff"/>
+                  <rect width="160" height="26" fill="#f59e0b"/>
+                </g>
+                <rect width="160" height="110" rx="10" fill="none" stroke="#f59e0b" stroke-width="2"/>
+                <text x="80" y="13" fill="#fff" font-family="Inter, sans-serif" font-size="10" font-weight="800" letter-spacing="1.2" text-anchor="middle" dominant-baseline="middle">LARGURA</text>
+                <g transform="translate(80, 46)">
+                  <line x1="-22" y1="0" x2="22" y2="0" stroke="#f59e0b" stroke-width="2.5"/>
+                  <polygon points="-25,0 -18,-6 -18,6" fill="#f59e0b"/>
+                  <polygon points="25,0 18,-6 18,6" fill="#f59e0b"/>
+                </g>
+                <text x="80" y="86" fill="#1a1414" font-family="Inter, sans-serif" font-size="20" font-weight="800" text-anchor="middle">1,288 m</text>
+                <text x="80" y="102" fill="#666" font-family="Inter, sans-serif" font-size="9" font-weight="600" text-anchor="middle">item 2.2.1</text>
+              </g>
+
+              <!-- Card 2: PROFUNDIDADE (red) -->
+              <g transform="translate(234, 60)">
+                <g clip-path="url(#card-clip-d)">
+                  <rect width="160" height="110" fill="#fff"/>
+                  <rect width="160" height="26" fill="#c8392f"/>
+                </g>
+                <rect width="160" height="110" rx="10" fill="none" stroke="#c8392f" stroke-width="2"/>
+                <text x="80" y="13" fill="#fff" font-family="Inter, sans-serif" font-size="10" font-weight="800" letter-spacing="1.2" text-anchor="middle" dominant-baseline="middle">PROFUNDIDADE</text>
+                <g transform="translate(80, 46)">
+                  <line x1="0" y1="-15" x2="0" y2="15" stroke="#c8392f" stroke-width="2.5"/>
+                  <polygon points="0,-18 -6,-11 6,-11" fill="#c8392f"/>
+                  <polygon points="0,18 -6,11 6,11" fill="#c8392f"/>
+                </g>
+                <text x="80" y="86" fill="#1a1414" font-family="Inter, sans-serif" font-size="20" font-weight="800" text-anchor="middle">0,1433 m</text>
+                <text x="80" y="102" fill="#666" font-family="Inter, sans-serif" font-size="9" font-weight="600" text-anchor="middle">item 2.2.2</text>
+              </g>
+
+              <!-- Card 3: TEMPO MÉDIO (teal) -->
+              <g transform="translate(406, 60)">
+                <g clip-path="url(#card-clip-d)">
+                  <rect width="160" height="110" fill="#fff"/>
+                  <rect width="160" height="26" fill="#2c7da0"/>
+                </g>
+                <rect width="160" height="110" rx="10" fill="none" stroke="#2c7da0" stroke-width="2"/>
+                <text x="80" y="13" fill="#fff" font-family="Inter, sans-serif" font-size="10" font-weight="800" letter-spacing="1.2" text-anchor="middle" dominant-baseline="middle">TEMPO MÉDIO</text>
+                <g transform="translate(80, 46)" fill="none" stroke="#2c7da0" stroke-width="2.2" stroke-linecap="round">
+                  <circle cx="0" cy="0" r="13"/>
+                  <line x1="0" y1="0" x2="0" y2="-8"/>
+                  <line x1="0" y1="0" x2="7" y2="4"/>
+                </g>
+                <text x="80" y="86" fill="#1a1414" font-family="Inter, sans-serif" font-size="22" font-weight="800" text-anchor="middle">40,67 s</text>
+                <text x="80" y="102" fill="#666" font-family="Inter, sans-serif" font-size="9" font-weight="600" text-anchor="middle">item 2.2.3</text>
+              </g>
+
+              <!-- Card 4: PPM (green) -->
+              <g transform="translate(578, 60)">
+                <g clip-path="url(#card-clip-d)">
+                  <rect width="160" height="110" fill="#fff"/>
+                  <rect width="160" height="26" fill="#10b981"/>
+                </g>
+                <rect width="160" height="110" rx="10" fill="none" stroke="#10b981" stroke-width="2"/>
+                <text x="80" y="13" fill="#fff" font-family="Inter, sans-serif" font-size="10" font-weight="800" letter-spacing="1.2" text-anchor="middle" dominant-baseline="middle">CONCENTRAÇÃO</text>
+                <g transform="translate(80, 46)" fill="#10b981">
+                  <path d="M 0 -14 C 9 -3 9 5 0 14 C -9 5 -9 -3 0 -14 Z"/>
+                </g>
+                <text x="80" y="86" fill="#1a1414" font-family="Inter, sans-serif" font-size="22" font-weight="800" text-anchor="middle">25 ppm</text>
+                <text x="80" y="102" fill="#666" font-family="Inter, sans-serif" font-size="9" font-weight="600" text-anchor="middle">padrão</text>
+              </g>
+
+              <!-- Convergence lines (cards bottom y=170 -> formula center 400, 215) -->
+              <g stroke="#9aa0a6" stroke-width="1.5" stroke-dasharray="4 4" fill="none">
+                <line x1="142" y1="170" x2="400" y2="215"/>
+                <line x1="314" y1="170" x2="400" y2="215"/>
+                <line x1="486" y1="170" x2="400" y2="215"/>
+                <line x1="658" y1="170" x2="400" y2="215"/>
+              </g>
+              <circle cx="400" cy="215" r="4" fill="#1a1414"/>
+
+              <!-- Formula box -->
+              <g transform="translate(400, 240)">
+                <rect x="-330" y="-20" width="660" height="40" rx="20" fill="#1a1414"/>
+                <text x="0" y="0" fill="#fff" font-family="Inter, sans-serif" font-size="13" font-weight="700" text-anchor="middle" dominant-baseline="middle">DOSE = <tspan fill="#10b981" font-weight="800">25</tspan> × (600 ÷ <tspan fill="#2c7da0" font-weight="800">40,67</tspan>) × <tspan fill="#c8392f" font-weight="800">0,1433</tspan> × <tspan fill="#f59e0b" font-weight="800">1,288</tspan> × <tspan fill="#cbd5e1" font-weight="800">0,85</tspan></text>
+              </g>
+
+              <!-- Arrow down -->
+              <g transform="translate(400, 280)">
+                <line x1="0" y1="0" x2="0" y2="22" stroke="#1a1414" stroke-width="2"/>
+                <polygon points="0,30 -7,20 7,20" fill="#1a1414"/>
+              </g>
+
+              <!-- Result card -->
+              <g transform="translate(400, 370)">
+                <rect x="-180" y="-50" width="360" height="100" rx="14" fill="#10b981"/>
+                <text x="0" y="-22" fill="#fff" font-family="Inter, sans-serif" font-size="11" font-weight="700" letter-spacing="2" text-anchor="middle" dominant-baseline="middle">DOSE CALCULADA</text>
+                <text x="0" y="15" fill="#fff" font-family="Inter, sans-serif" font-size="32" font-weight="800" text-anchor="middle" dominant-baseline="middle">≈ 58 ml</text>
+              </g>
+            </svg>
+
+            <figcaption><strong>Figura 4</strong> — Exemplo do dimensionamento da dose com os dados medidos nas seções 2.2.1, 2.2.2 e 2.2.3. Para um trecho com largura média de 1,288 m, profundidade média de 0,1433 m e tempo médio de 40,67 s, à concentração padrão de 25 ppm, a dose calculada de VectoBac® 12AS é de aproximadamente <strong>58 ml</strong> para o trecho avaliado, em conformidade com a planilha técnica do fabricante.</figcaption>
+          </figure>
 
           <div class="callout warn">
             <h5>Observação técnica</h5>
