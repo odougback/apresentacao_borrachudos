@@ -14,8 +14,8 @@
   const loader = document.getElementById('loader');
   const loaderFill = document.getElementById('loaderFill');
   const loaderText = document.getElementById('loaderText');
-  const slideImages = document.querySelectorAll('.slide img');
-  const totalImages = slideImages.length;
+  const pageImages = document.querySelectorAll('.page img');
+  const totalImages = pageImages.length;
   let loadedImages = 0;
   let loaderHidden = false;
 
@@ -38,7 +38,7 @@
     }, 250);
   }
 
-  slideImages.forEach((img) => {
+  pageImages.forEach((img) => {
     if (img.complete && img.naturalHeight !== 0) {
       loadedImages++;
     } else {
@@ -57,12 +57,12 @@
   // Fallback: hide loader after 10s even if some images fail silently
   setTimeout(hideLoader, 10000);
 
-  /* ============ SLIDE TEXTS ============ */
-  const slideTexts = [
+  /* ============ PAGE TEXTS ============ */
+  const pageTexts = [
     {
       title: 'Controle Biológico de Mosquitos Borrachudos',
       body: `
-        <p>Apresentação técnica sobre soluções biológicas para o controle de mosquitos borrachudos (simulídeos).</p>
+        <p>Material técnico sobre soluções biológicas para o controle de mosquitos borrachudos (simulídeos).</p>
         <ul>
           <li>Soluções biológicas para um ambiente mais saudável</li>
           <li>Eficácia comprovada, tecnologia segura e sustentável</li>
@@ -143,7 +143,7 @@
           <li>Formulação em <strong>solução aquosa</strong></li>
           <li>Aditivo gera espuma na água, ajudando a visualizar o alcance</li>
           <li>Utilizado a mais de <strong>30 anos</strong> no programa de controle de borrachudos no Brasil</li>
-          <li><strong>Apresentação:</strong> 10 L</li>
+          <li><strong>Embalagem:</strong> 10 L</li>
         </ul>
         <h3>Por que usar VectoBac® 12AS?</h3>
         <ul>
@@ -226,7 +226,7 @@
           <li>Presença de <strong>cachoeiras, remansos ou represas</strong></li>
           <li>Presença de <strong>obstáculos</strong> que impeçam o escoamento da água (lixo plástico, pneus, materiais que não pertencem ao rio)</li>
           <li>Quantidade de <strong>material orgânico</strong> em suspensão</li>
-          <li>Para a determinação da distância entre os pontos de aplicação, o melhor método é o <strong>visual</strong> — neste caso o VectoBac 12AS apresenta mais uma vantagem (espuma sinalizadora)</li>
+          <li>Para a determinação da distância entre os pontos de aplicação, o melhor método é o <strong>visual</strong> — neste caso o VectoBac 12AS oferece mais uma vantagem (espuma sinalizadora)</li>
         </ul>
         <p>A avaliação destes fatores é essencial para garantir a <strong>eficácia da aplicação</strong> e melhorar os resultados do controle com Bti.</p>
       `
@@ -307,15 +307,15 @@
   ];
 
   /* ============ ELEMENTS ============ */
-  const slides = Array.from(document.querySelectorAll('.slide'));
-  const total = slides.length;
+  const pages = Array.from(document.querySelectorAll('.page'));
+  const total = pages.length;
 
   const prevBtn = document.getElementById('prevBtn');
   const nextBtn = document.getElementById('nextBtn');
   const fullscreenBtn = document.getElementById('fullscreenBtn');
   const helperBtn = document.getElementById('helperBtn');
-  const currentEl = document.getElementById('currentSlide');
-  const totalEl = document.getElementById('totalSlides');
+  const currentEl = document.getElementById('currentPage');
+  const totalEl = document.getElementById('totalPages');
   const progressFill = document.getElementById('progressFill');
   const dotsWrap = document.getElementById('dots');
 
@@ -331,10 +331,10 @@
   totalEl.textContent = total;
 
   /* ============ DOTS ============ */
-  slides.forEach((_, i) => {
+  pages.forEach((_, i) => {
     const dot = document.createElement('button');
     dot.className = 'dot' + (i === 0 ? ' active' : '');
-    dot.setAttribute('aria-label', 'Ir para slide ' + (i + 1));
+    dot.setAttribute('aria-label', 'Ir para página ' + (i + 1));
     dot.addEventListener('click', () => goTo(i));
     dotsWrap.appendChild(dot);
   });
@@ -343,10 +343,10 @@
   /* ============ NAVIGATION ============ */
   function goTo(index) {
     if (index < 0 || index >= total || index === current) return;
-    slides[current].classList.remove('active');
+    pages[current].classList.remove('active');
     dots[current].classList.remove('active');
     current = index;
-    slides[current].classList.add('active');
+    pages[current].classList.add('active');
     dots[current].classList.add('active');
     update();
   }
@@ -416,7 +416,7 @@
   fullscreenBtn.addEventListener('click', toggleFullscreen);
 
   /* ============ CLICK ZONES ============ */
-  document.querySelector('.slides').addEventListener('click', (e) => {
+  document.querySelector('.pages').addEventListener('click', (e) => {
     if (e.target.closest('.nav-btn, .fullscreen-btn, .helper-btn, .dot, .counter, .modal')) return;
     const x = e.clientX;
     const w = window.innerWidth;
@@ -443,9 +443,9 @@
 
   /* ============ MODAL ============ */
   function openModal() {
-    const data = slideTexts[current];
+    const data = pageTexts[current];
     if (!data) return;
-    modalEyebrow.textContent = 'Slide ' + (current + 1) + ' de ' + total;
+    modalEyebrow.textContent = 'Página ' + (current + 1) + ' de ' + total;
     modalTitle.textContent = data.title;
     modalBody.innerHTML = data.body;
     modal.classList.add('open');
@@ -500,7 +500,7 @@
     {
       target: null,
       title: 'Bem-vindo!',
-      text: 'Vamos te mostrar como navegar pela apresentação. Leva menos de 30 segundos.'
+      text: 'Vamos te mostrar como navegar pelo material. Leva menos de 30 segundos.'
     },
     {
       target: '.home-btn',
@@ -511,13 +511,13 @@
     {
       target: '.fullscreen-btn',
       title: 'Tela cheia',
-      text: 'Maximize a apresentação para uma experiência imersiva. Atalho: F.',
+      text: 'Maximize o material para uma experiência imersiva. Atalho: F.',
       placement: 'right'
     },
     {
       target: '.helper-btn',
       title: 'Informações',
-      text: 'Abre um painel com todo o conteúdo escrito do slide atual. Atalho: H.',
+      text: 'Abre um painel com todo o conteúdo escrito da página atual. Atalho: H.',
       placement: 'right'
     },
     {
@@ -529,19 +529,19 @@
     {
       target: '.dots',
       title: 'Acesso rápido',
-      text: 'Clique em qualquer ponto do rodapé para pular direto para um slide específico.',
+      text: 'Clique em qualquer ponto do rodapé para pular direto para uma página específica.',
       placement: 'top'
     },
     {
       target: '.nav-next',
-      title: 'Navegar entre slides',
+      title: 'Navegar entre páginas',
       text: 'Use as setas laterais para avançar e voltar. No teclado: ← e →. No celular, deslize com o dedo ou toque na metade da tela.',
       placement: 'left'
     },
     {
       target: '.counter',
       title: 'Onde você está',
-      text: 'O contador mostra o slide atual e o total da apresentação.',
+      text: 'O contador mostra a página atual e o total do material.',
       placement: 'bottom-left'
     }
   ];
@@ -556,7 +556,7 @@
   const tourSkip = document.getElementById('tourSkip');
   const tourPrev = document.getElementById('tourPrev');
   const tourNext = document.getElementById('tourNext');
-  const presentationEl = document.querySelector('.presentation');
+  const materialViewerEl = document.querySelector('.material-viewer');
   const TOUR_KEY = 'tourCompleted';
 
   let tourIndex = 0;
@@ -567,7 +567,7 @@
     tourActive = true;
     tour.classList.add('open');
     tour.setAttribute('aria-hidden', 'false');
-    presentationEl.classList.add('tour-active');
+    materialViewerEl.classList.add('tour-active');
     showTourStep(0);
   }
 
@@ -575,7 +575,7 @@
     tourActive = false;
     tour.classList.remove('open');
     tour.setAttribute('aria-hidden', 'true');
-    presentationEl.classList.remove('tour-active');
+    materialViewerEl.classList.remove('tour-active');
     localStorage.setItem(TOUR_KEY, '1');
   }
 

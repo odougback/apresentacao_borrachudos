@@ -135,8 +135,8 @@ table {
   border: 0;
 }
 
-/* === PRESENTATION === */
-.presentation {
+/* === MATERIAL VIEWER === */
+.material-viewer {
   display: flex;
   flex-direction: column;
   position: relative;
@@ -146,18 +146,18 @@ table {
   overflow: hidden;
 }
 
-.slide {
+.page {
   padding: env(safe-area-inset-top) env(safe-area-inset-right) 0 env(safe-area-inset-left);
 }
 
-.slides {
+.pages {
   flex: 1;
   position: relative;
   min-height: 0;
   overflow: hidden;
 }
 
-.slide {
+.page {
   position: absolute;
   inset: 0;
   display: flex;
@@ -169,14 +169,14 @@ table {
   transition: opacity 0.5s ease, transform 0.5s ease, visibility 0s linear 0.5s;
 }
 
-.slide.active {
+.page.active {
   opacity: 1;
   visibility: visible;
   transform: scale(1);
   transition: opacity 0.5s ease, transform 0.5s ease, visibility 0s;
 }
 
-.slide img {
+.page img {
   max-width: 100%;
   max-height: 100%;
   width: auto;
@@ -208,7 +208,7 @@ table {
   opacity: 0;
 }
 
-.presentation:hover .nav-btn {
+.material-viewer:hover .nav-btn {
   opacity: 1;
 }
 
@@ -248,7 +248,7 @@ table {
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-#currentSlide {
+#currentPage {
   font-weight: 700;
   color: #fff;
 }
@@ -275,12 +275,87 @@ table {
   opacity: 0;
 }
 
-.presentation:hover .fullscreen-btn {
+.material-viewer:hover .fullscreen-btn {
   opacity: 1;
 }
 
 .fullscreen-btn:hover {
   background: rgba(255, 255, 255, 0.2);
+}
+
+.home-btn::after,
+.fullscreen-btn::after,
+.helper-btn::after,
+.tour-btn::after {
+  content: attr(aria-label);
+  position: absolute;
+  left: calc(100% + 12px);
+  top: 50%;
+  transform: translateY(-50%) translateX(-4px);
+  min-width: max-content;
+  max-width: 220px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: rgba(15, 15, 15, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.35);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.18s ease, transform 0.18s ease, visibility 0s linear 0.18s;
+}
+
+.home-btn::before,
+.fullscreen-btn::before,
+.helper-btn::before,
+.tour-btn::before {
+  content: "";
+  position: absolute;
+  left: calc(100% + 7px);
+  top: 50%;
+  width: 8px;
+  height: 8px;
+  background: rgba(15, 15, 15, 0.92);
+  border-left: 1px solid rgba(255, 255, 255, 0.12);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  transform: translateY(-50%) rotate(45deg);
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.18s ease, visibility 0s linear 0.18s;
+}
+
+.home-btn:hover::after,
+.home-btn:focus-visible::after,
+.fullscreen-btn:hover::after,
+.fullscreen-btn:focus-visible::after,
+.helper-btn:hover::after,
+.helper-btn:focus-visible::after,
+.tour-btn:hover::after,
+.tour-btn:focus-visible::after {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(-50%) translateX(0);
+  transition-delay: 0s;
+}
+
+.home-btn:hover::before,
+.home-btn:focus-visible::before,
+.fullscreen-btn:hover::before,
+.fullscreen-btn:focus-visible::before,
+.helper-btn:hover::before,
+.helper-btn:focus-visible::before,
+.tour-btn:hover::before,
+.tour-btn:focus-visible::before {
+  opacity: 1;
+  visibility: visible;
+  transition-delay: 0s;
 }
 
 /* === PROGRESS BAR === */
@@ -320,7 +395,7 @@ table {
   transition: opacity 0.3s ease;
 }
 
-.presentation:hover .dots {
+.material-viewer:hover .dots {
   opacity: 1;
 }
 
@@ -366,7 +441,7 @@ table {
   opacity: 0;
 }
 
-.presentation:hover .helper-btn {
+.material-viewer:hover .helper-btn {
   opacity: 1;
 }
 
@@ -400,7 +475,7 @@ table {
   opacity: 0;
 }
 
-.presentation:hover .tour-btn {
+.material-viewer:hover .tour-btn {
   opacity: 1;
 }
 
@@ -435,7 +510,7 @@ table {
   text-decoration: none;
 }
 
-.presentation:hover .home-btn {
+.material-viewer:hover .home-btn {
   opacity: 1;
 }
 
@@ -602,12 +677,12 @@ table {
 }
 
 /* Force-show UI elements while tour is active */
-.presentation.tour-active .nav-btn,
-.presentation.tour-active .dots,
-.presentation.tour-active .fullscreen-btn,
-.presentation.tour-active .helper-btn,
-.presentation.tour-active .tour-btn,
-.presentation.tour-active .home-btn {
+.material-viewer.tour-active .nav-btn,
+.material-viewer.tour-active .dots,
+.material-viewer.tour-active .fullscreen-btn,
+.material-viewer.tour-active .helper-btn,
+.material-viewer.tour-active .tour-btn,
+.material-viewer.tour-active .home-btn {
   opacity: 1 !important;
 }
 
