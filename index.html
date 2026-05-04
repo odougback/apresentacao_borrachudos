@@ -325,6 +325,11 @@
 
     /* === MATERIAIS === */
     .materiais { background: var(--bg-soft); }
+    .materiais-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
     .featured-card {
       background: linear-gradient(135deg, #143626, #0d2419);
       color: #fff;
@@ -392,6 +397,27 @@
       width: 180px;
       height: 180px;
       opacity: 0.9;
+    }
+
+    /* Variante azul (água) — manual de vazão */
+    .featured-card.water {
+      background: linear-gradient(135deg, #0f2a3d, #081a26);
+      box-shadow: 0 30px 60px rgba(8, 26, 38, 0.28);
+    }
+    .featured-card.water::before {
+      background: radial-gradient(circle, rgba(56, 189, 248, 0.14), transparent 70%);
+    }
+    .featured-card.water .featured-tag {
+      color: #38bdf8;
+      background: rgba(56, 189, 248, 0.14);
+    }
+    .featured-card.water .btn-primary {
+      background: #38bdf8;
+      color: #0a0a0a;
+    }
+    .featured-card.water .btn-primary:hover {
+      background: #7dd3fc;
+      box-shadow: 0 12px 28px rgba(56, 189, 248, 0.3);
     }
 
     /* === CONTATO === */
@@ -489,10 +515,11 @@
     }
     .footer-inner {
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
       align-items: center;
       flex-wrap: wrap;
       gap: 16px;
+      text-align: center;
     }
     .footer-inner img { height: 28px; opacity: 0.85; }
     .footer-credits a { color: rgba(255, 255, 255, 0.85); transition: color 0.2s; }
@@ -628,23 +655,45 @@
           <span class="section-eyebrow">Materiais técnicos</span>
           <h2 class="section-title">Conteúdo técnico disponível</h2>
         </div>
-        <article class="featured-card">
-          <div>
-            <span class="featured-tag">Material técnico</span>
-            <h3>Controle Biológico de Mosquitos Borrachudos com Bti</h3>
-            <p>Material de consulta sobre ciclo de vida dos simulídeos, criadouros, métodos de controle, modo de ação do Bacillus thuringiensis israelensis, dose, aplicação e análises comparativas com VECTOBAC® 12AS.</p>
-            <a class="btn btn-primary" href="borrachudos/">
-              Acessar material
-              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-            </a>
-          </div>
-          <div class="featured-visual">
-            <svg viewBox="0 0 64 64" aria-hidden="true">
-              <circle cx="32" cy="32" r="32" fill="#143626"/>
-              <path d="M32 12 C32 12, 18 28, 18 40 A14 14 0 0 0 46 40 C46 28, 32 12, 32 12 Z" fill="#ffffff"/>
-            </svg>
-          </div>
-        </article>
+        <div class="materiais-stack">
+          <article class="featured-card">
+            <div>
+              <span class="featured-tag">Material técnico</span>
+              <h3>Controle Biológico de Mosquitos Borrachudos com Bti</h3>
+              <p>Material de consulta sobre ciclo de vida dos simulídeos, criadouros, métodos de controle, modo de ação do Bacillus thuringiensis israelensis, dose, aplicação e análises comparativas com VECTOBAC® 12AS.</p>
+              <a class="btn btn-primary" href="borrachudos/">
+                Acessar material
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+            </div>
+            <div class="featured-visual">
+              <svg viewBox="0 0 64 64" aria-hidden="true">
+                <circle cx="32" cy="32" r="32" fill="#143626"/>
+                <path d="M32 12 C32 12, 18 28, 18 40 A14 14 0 0 0 46 40 C46 28, 32 12, 32 12 Z" fill="#ffffff"/>
+              </svg>
+            </div>
+          </article>
+
+          <article class="featured-card water">
+            <div>
+              <span class="featured-tag">Manual técnico</span>
+              <h3>Cálculo de Vazão e Dose de VectoBac® 12AS</h3>
+              <p>Procedimentos de campo para a medição da vazão de cursos d'água — largura, profundidade e velocidade superficial — e o dimensionamento da dose de larvicida biológico no controle de simulídeos.</p>
+              <a class="btn btn-primary" href="vazao/">
+                Acessar manual
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+            </div>
+            <div class="featured-visual">
+              <svg viewBox="0 0 64 64" aria-hidden="true">
+                <circle cx="32" cy="32" r="32" fill="#0f2a3d"/>
+                <path d="M14 36 Q 22 30 30 36 T 46 36 T 50 36" stroke="#ffffff" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+                <path d="M14 42 Q 22 36 30 42 T 46 42 T 50 42" stroke="#ffffff" stroke-width="2.4" fill="none" stroke-linecap="round" opacity="0.7"/>
+                <path d="M14 30 Q 22 24 30 30 T 46 30 T 50 30" stroke="#ffffff" stroke-width="2.4" fill="none" stroke-linecap="round" opacity="0.45"/>
+              </svg>
+            </div>
+          </article>
+        </div>
       </div>
     </section>
 
@@ -709,8 +758,7 @@
 
   <footer class="site-footer">
     <div class="container footer-inner">
-      <div>© <span id="year"></span> Comércio e Serviços Aracaju LTDA · CNPJ 95.758.595/0001-55</div>
-      <div class="footer-credits">Desenvolvido por <a href="https://tudonanuvem.net" target="_blank" rel="noopener">tudonanuvem.net</a></div>
+      <div>© <span id="year"></span> por Comércio e Serviços Aracaju LTDA · Desenvolvido por <a href="https://tudonanuvem.net" target="_blank" rel="noopener">tudonanuvem.net</a></div>
     </div>
   </footer>
 

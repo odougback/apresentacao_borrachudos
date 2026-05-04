@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
-  <title>Avaliação de Pontos do Controle Larval — V05 — Aracaju Serviços</title>
-  <meta name="description" content="Relatório técnico — Avaliação de Pontos do Controle Larval (Versão 05). Pregão Eletrônico 590/2023 — Termo de Contrato 650/2024 — Secretaria de Meio Ambiente, Joinville/SC.">
+  <title>Manual — Cálculo de Vazão e Dose de VectoBac® 12AS</title>
+  <meta name="description" content="Manual técnico — procedimentos para o cálculo da vazão de cursos d'água e o dimensionamento da dose de larvicida biológico VectoBac® 12AS no controle de simulídeos (borrachudos).">
   <meta name="author" content="Comércio e Serviços Aracaju LTDA">
   <meta name="theme-color" content="#c8392f">
 
@@ -20,142 +20,85 @@
 </head>
 <body>
 
-  <header class="topbar">
-    <a class="back" href="../" aria-label="Voltar ao site">
-      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
-      Voltar
-    </a>
-    <img class="brand" src="../img/logo.png" alt="Aracaju Comércio e Serviços">
-    <button class="print-btn" onclick="window.print()" aria-label="Imprimir">
-      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
-      Imprimir
-    </button>
-  </header>
+  <a class="fab fab-back" href="../" aria-label="Voltar ao site">
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+  </a>
+
+  <button class="fab fab-toc" id="tocBtn" aria-label="Abrir sumário" aria-expanded="false">
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="14" y2="18"/></svg>
+  </button>
+
+  <div class="toc-drawer" id="tocDrawer" aria-hidden="true">
+    <div class="toc-backdrop" id="tocBackdrop"></div>
+    <aside class="toc-panel" role="dialog" aria-modal="true" aria-labelledby="tocPanelTitle">
+      <header class="toc-panel-head">
+        <h2 id="tocPanelTitle">Sumário</h2>
+        <button class="toc-close" id="tocClose" aria-label="Fechar sumário">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </header>
+      <ol class="toc-drawer-list">
+        <li><a href="#introducao"><span class="toc-num">1.</span><span class="toc-text">Introdução</span></a></li>
+        <li>
+          <a href="#vazao"><span class="toc-num">2.</span><span class="toc-text">Cálculo da Vazão</span></a>
+          <ol>
+            <li><a href="#largura"><span class="toc-num">2.1</span><span class="toc-text">Largura média</span></a></li>
+            <li><a href="#profundidade"><span class="toc-num">2.2</span><span class="toc-text">Profundidade média</span></a></li>
+            <li><a href="#velocidade"><span class="toc-num">2.3</span><span class="toc-text">Velocidade superficial</span></a></li>
+          </ol>
+        </li>
+        <li><a href="#dose"><span class="toc-num">3.</span><span class="toc-text">Dose de VectoBac® 12AS</span></a></li>
+      </ol>
+    </aside>
+  </div>
 
   <main class="doc">
 
     <!-- ============== COVER ============== -->
     <section class="cover">
-      <div class="cover-tag">Relatório técnico</div>
-      <h1 class="cover-title">Avaliação de Pontos do Controle Larval</h1>
-      <div class="cover-version">Versão 05</div>
-
-      <div class="cover-meta">
-        <div class="meta-row">
-          <span class="meta-label">Pregão Eletrônico</span>
-          <span class="meta-value">590/2023</span>
-        </div>
-        <div class="meta-row">
-          <span class="meta-label">Termo de Contrato</span>
-          <span class="meta-value">650/2024</span>
-        </div>
-      </div>
-
-      <div class="cover-client">
-        <div class="client-name">Município de Joinville</div>
-        <div class="client-org">Secretaria de Meio Ambiente</div>
-      </div>
-
-      <div class="cover-date">Abril / 2026</div>
-    </section>
-
-    <!-- ============== SUMÁRIO ============== -->
-    <section class="toc">
-      <h2 class="section-label">Sumário</h2>
-      <ol class="toc-list">
-        <li><a href="#introducao"><span class="toc-num">1.</span><span class="toc-text">Introdução</span></a></li>
-        <li>
-          <a href="#metodologia"><span class="toc-num">2.</span><span class="toc-text">Metodologia para Determinação de Pontos</span></a>
-          <ol>
-            <li><a href="#m-levantamento"><span class="toc-num">2.1</span><span class="toc-text">Levantamento e avaliação de campo</span></a></li>
-            <li>
-              <a href="#m-vazao"><span class="toc-num">2.2</span><span class="toc-text">Medição de Vazão</span></a>
-              <ol>
-                <li><a href="#m-largura"><span class="toc-num">2.2.1</span><span class="toc-text">Determinação da largura média</span></a></li>
-                <li><a href="#m-profundidade"><span class="toc-num">2.2.2</span><span class="toc-text">Determinação da profundidade média</span></a></li>
-                <li><a href="#m-velocidade"><span class="toc-num">2.2.3</span><span class="toc-text">Velocidade superficial</span></a></li>
-                <li><a href="#m-dose"><span class="toc-num">2.2.4</span><span class="toc-text">Dimensionamento da dose de larvicida</span></a></li>
-              </ol>
-            </li>
-            <li><a href="#m-identificacao"><span class="toc-num">2.3</span><span class="toc-text">Identificação dos Pontos</span></a></li>
-          </ol>
-        </li>
-        <li>
-          <a href="#execucao"><span class="toc-num">3.</span><span class="toc-text">Execução das Medições de Vazão em Campo</span></a>
-          <ol>
-            <li><a href="#e-consideracoes"><span class="toc-num">3.1</span><span class="toc-text">Considerações iniciais</span></a></li>
-            <li><a href="#e-regioes"><span class="toc-num">3.2</span><span class="toc-text">Regiões contempladas</span></a></li>
-            <li><a href="#e-direta"><span class="toc-num">3.3</span><span class="toc-text">Pontos com medição direta de vazão</span></a></li>
-            <li><a href="#e-sem-medicao"><span class="toc-num">3.4</span><span class="toc-text">Apresentação dos pontos sem medição de vazão</span></a></li>
-            <li><a href="#e-comprovacao"><span class="toc-num">3.5</span><span class="toc-text">Comprovação técnica e atualizações futuras</span></a></li>
-          </ol>
-        </li>
-      </ol>
+      <div class="cover-tag">Manual técnico</div>
+      <h1 class="cover-title">Cálculo de Vazão e Dose de VectoBac® 12AS</h1>
+      <p class="cover-lede">Procedimentos de campo para a medição da vazão de cursos d'água e o dimensionamento da dose de larvicida biológico no controle de simulídeos (borrachudos).</p>
     </section>
 
     <!-- ============== 1. INTRODUÇÃO ============== -->
     <section class="chapter" id="introducao">
       <h2><span class="ch-num">1.</span> Introdução</h2>
-      <p>A avaliação dos pontos de controle larval constitui uma etapa fundamental no manejo de simulídeos (borrachudos), uma vez que permite definir, com precisão técnica, os locais estratégicos para aplicação do larvicida biológico, visando a máxima eficiência no controle das formas imaturas (larvas).</p>
-      <p>Esse processo tem como principal objetivo identificar, ajustar e validar os pontos de intervenção ao longo dos cursos d'água, garantindo que o produto seja adequadamente distribuído e alcance as áreas com presença de larvas, considerando as características hídricas e ambientais de cada trecho.</p>
-      <p>A definição dos pontos de controle deve levar em consideração, de forma integrada, a presença de insetos adultos na área e a ocorrência de formas imaturas (larvas) nos criadouros, permitindo correlacionar os focos de infestação com os locais de desenvolvimento do vetor.</p>
-      <p>A avaliação contempla, de forma técnica, os seguintes aspectos:</p>
+      <p>Este manual descreve, de forma técnica e padronizada, os procedimentos para o <strong>cálculo da vazão de cursos d'água</strong> — rios, córregos e canais — e para o <strong>dimensionamento da dose do larvicida biológico VectoBac® 12AS</strong> empregado no controle de simulídeos (borrachudos).</p>
+      <p>A medição precisa da vazão é etapa fundamental para o correto dimensionamento da dose: dela dependem a eficiência da aplicação, a adequada dispersão do produto no trecho tratado e o uso racional do larvicida — evitando subdoses, que comprometem a eficácia do controle, e sobredoses, que geram desperdício de produto e risco ambiental.</p>
+      <p>O conteúdo está organizado em duas partes complementares:</p>
       <ul class="bullet">
-        <li>Análise e definição dos pontos de aplicação, incluindo a possibilidade de realocação de pontos existentes ou implantação de novos pontos, conforme as condições observadas em campo;</li>
-        <li>Determinação da vazão dos cursos d'água, parâmetro essencial para o dimensionamento da dose de larvicida a ser aplicada.</li>
+        <li><strong>Cálculo da vazão</strong> (Capítulo 2) — métodos de campo para a determinação da largura média, da profundidade média e da velocidade superficial do curso d'água, com aplicação direta na fórmula da vazão.</li>
+        <li><strong>Dimensionamento da dose</strong> (Capítulo 3) — fórmula da dose, concentração padrão adotada para o VectoBac® 12AS e exemplo numérico aplicando os dados medidos em campo.</li>
       </ul>
-      <p>A execução adequada dessas atividades é determinante para a eficiência do tratamento, pois influencia diretamente a dispersão do produto, o alcance da aplicação e a efetividade no controle das larvas. Além disso, contribui para a otimização dos recursos operacionais e para a sustentabilidade das ações de controle, reduzindo desperdícios e minimizando impactos ambientais.</p>
+      <p>As fórmulas, os coeficientes e os exemplos apresentados ao longo do manual permitem que equipes técnicas executem o procedimento de forma padronizada em diferentes contextos operacionais, garantindo consistência e rastreabilidade dos resultados.</p>
     </section>
 
-    <!-- ============== 2. METODOLOGIA ============== -->
-    <section class="chapter" id="metodologia">
-      <h2><span class="ch-num">2.</span> Metodologia para Determinação de Pontos</h2>
-      <p>A metodologia adotada para a avaliação dos pontos de controle larval de simulídeos baseia-se em procedimentos técnicos de campo voltados à identificação, caracterização e dimensionamento dos locais de aplicação do larvicida biológico.</p>
-      <p>As atividades são realizadas diretamente nos cursos d'água, considerando suas características hídricas, ambientais e biológicas, com o objetivo de garantir maior precisão na definição dos pontos e na eficiência do controle.</p>
-      <p>A metodologia compreende as seguintes etapas:</p>
+    <!-- ============== 2. CÁLCULO DA VAZÃO ============== -->
+    <section class="chapter" id="vazao">
+      <h2><span class="ch-num">2.</span> Cálculo da Vazão</h2>
+      <p>A vazão de um curso d'água corresponde ao <strong>volume de água que atravessa uma seção transversal por unidade de tempo</strong>. No contexto do controle de simulídeos, é o parâmetro hídrico fundamental para o correto dimensionamento da dose de larvicida biológico — uma vazão maior implica maior diluição do produto e, portanto, maior volume a ser aplicado para alcançar a concentração efetiva.</p>
+      <p>Sempre que houver acesso seguro e condições adequadas de campo, a vazão de rios, córregos ou canais deve ser estimada por meio da <strong>medição direta dos parâmetros hídricos básicos</strong>, sendo esta a metodologia recomendada para garantir precisão nos cálculos.</p>
+      <p>A vazão é obtida pela multiplicação de quatro parâmetros — largura média do canal, profundidade média da lâmina d'água, velocidade superficial da corrente e um coeficiente de correção — conforme a expressão:</p>
+
+      <div class="formula-card">
+        <div class="formula-eq">Q = L × P × V<sub>s</sub> × C</div>
+        <ul class="formula-vars">
+          <li><strong>Q</strong> = vazão (m³/s)</li>
+          <li><strong>L</strong> = largura média do curso d'água (m)</li>
+          <li><strong>P</strong> = profundidade média (m)</li>
+          <li><strong>V<sub>s</sub></strong> = velocidade superficial da água (m/s)</li>
+          <li><strong>C</strong> = coeficiente de correção (adimensional, tipicamente 0,85 para leitos naturais)</li>
+        </ul>
+      </div>
+
+      <p>O <strong>coeficiente de correção (C)</strong> é aplicado para converter a velocidade superficial — medida pelo método do flutuador — em <strong>velocidade média ao longo da seção transversal</strong> do curso d'água. Como o atrito com o leito e as margens faz com que a água do fundo e das laterais escoe mais lentamente que a da superfície, a velocidade superficial é sempre maior que a velocidade média efetiva. O coeficiente, geralmente situado entre 0,80 e 0,90, ajusta essa diferença, sendo o valor de <strong>0,85</strong> amplamente adotado para leitos naturais com características hidráulicas regulares.</p>
+
+      <p>Os três itens a seguir descrevem, em detalhe, os procedimentos de campo para a obtenção de cada parâmetro (L, P e V<sub>s</sub>). Recomenda-se executar todas as medições no <strong>mesmo trecho representativo</strong> do curso d'água — preferencialmente com 10 metros de extensão e fluxo relativamente homogêneo — garantindo a coerência dos dados utilizados na fórmula.</p>
 
       <!-- 2.1 -->
-      <section class="sub" id="m-levantamento">
-        <h3><span class="sub-num">2.1</span> Levantamento e avaliação de campo</h3>
-        <p>Consiste na inspeção detalhada dos cursos d'água, com foco na identificação de áreas com presença de larvas e na verificação da ocorrência de insetos adultos nas proximidades.</p>
-        <p>Durante essa etapa, são avaliados:</p>
-        <ul class="bullet">
-          <li>Presença e intensidade de infestação larval;</li>
-          <li>Ocorrência de insetos adultos na área;</li>
-          <li>Características do curso d'água (largura, profundidade, velocidade aparente da corrente);</li>
-          <li>Presença de substratos favoráveis ao desenvolvimento larval (rochas, vegetação, galhos e materiais submersos);</li>
-          <li>Condições hídricas do trecho (turbulência, remansos, obstáculos e acúmulo de matéria orgânica).</li>
-        </ul>
-        <p>Com base nessas informações, são definidos, ajustados ou implantados novos pontos de aplicação, visando garantir cobertura adequada das áreas infestadas.</p>
-      </section>
-
-      <!-- 2.2 -->
-      <section class="sub" id="m-vazao">
-        <h3><span class="sub-num">2.2</span> Medição de Vazão</h3>
-        <p>Quando há necessidade de abertura de novos pontos em áreas ainda não contempladas pelo Programa de Controle de Simulídeos, a determinação da vazão do curso d'água constitui etapa fundamental para o correto dimensionamento da dose de larvicida a ser aplicada.</p>
-        <p>Sempre que houver acesso seguro e condições adequadas de campo, a vazão de rios, córregos ou canais deve ser estimada por meio da medição direta de parâmetros hídricos básicos, sendo esta a metodologia recomendada para garantir maior precisão nos cálculos e na eficiência da aplicação.</p>
-        <p>A vazão é determinada a partir da multiplicação de quatro parâmetros: largura média do canal, profundidade média da lâmina d'água, velocidade superficial da corrente e um coeficiente de correção, conforme a seguinte expressão:</p>
-
-        <div class="formula-card">
-          <div class="formula-eq">Q = L × P × V<sub>s</sub> × C</div>
-          <ul class="formula-vars">
-            <li><strong>Q</strong> = vazão (m³/s)</li>
-            <li><strong>L</strong> = largura média do curso d'água (m)</li>
-            <li><strong>P</strong> = profundidade média (m)</li>
-            <li><strong>V<sub>s</sub></strong> = velocidade superficial da água (m/s)</li>
-            <li><strong>C</strong> = coeficiente de correção (adimensional, tipicamente 0,85 para leitos naturais)</li>
-          </ul>
-        </div>
-
-        <p>O <strong>coeficiente de correção (C)</strong> é aplicado para converter a velocidade superficial — medida pelo método do flutuador — em <strong>velocidade média ao longo da seção transversal</strong> do curso d'água. Como o atrito com o leito e as margens faz com que a água do fundo e das laterais escoe mais lentamente que a da superfície, a velocidade superficial é sempre maior que a velocidade média efetiva. O coeficiente, geralmente situado entre 0,80 e 0,90, ajusta essa diferença, sendo o valor de <strong>0,85</strong> amplamente adotado em programas de controle de simulídeos para leitos naturais com características hidráulicas regulares.</p>
-
-        <p>A aplicação dessa metodologia permite estimar o volume de água que escoa no trecho avaliado em determinado intervalo de tempo, sendo um parâmetro essencial para o cálculo da dosagem adequada do larvicida. Dessa forma, garante-se maior eficiência no tratamento, melhor dispersão do produto e cobertura adequada das áreas com presença de larvas.</p>
-        <p>Em situações específicas onde a medição direta não possa ser realizada de forma segura ou operacionalmente viável, o dimensionamento da dose poderá ser definido com base em critérios técnicos empíricos. Nesses casos, a estimativa considera a experiência do profissional responsável, associada à avaliação visual das características do curso d'água, tais como largura aparente, velocidade da corrente, presença de matéria orgânica, nível de infestação e comportamento hídrico do trecho (turbulência, remansos e obstáculos).</p>
-        <p>Ainda que essa abordagem seja aplicada em campo, recomenda-se que seja utilizada de forma excepcional, sendo sempre acompanhada de monitoramento posterior, com o objetivo de validar a eficácia do tratamento e permitir ajustes nas aplicações subsequentes.</p>
-
-        <!-- 2.2.1 -->
-        <section class="sub-sub" id="m-largura">
-          <h4><span class="sub-num">2.2.1</span> Determinação da largura média</h4>
+      <section class="sub" id="largura">
+        <h3><span class="sub-num">2.1</span> Determinação da largura média</h3>
           <p>A determinação da largura média do curso d'água deve ser realizada por meio de medições sucessivas ao longo de um trecho representativo, preferencialmente com extensão de 10 metros.</p>
           <p>Para isso, recomenda-se medir a largura do córrego em intervalos regulares de 1 metro, totalizando múltiplos pontos de amostragem ao longo do trecho selecionado. Essas medições devem ser realizadas de margem a margem, em seções perpendiculares ao fluxo da água, buscando representar fielmente as variações do canal.</p>
           <p>Após a coleta dos dados, os valores obtidos devem ser somados e divididos pelo número total de medições realizadas, resultando na largura média do curso d'água, expressa em metros.</p>
@@ -290,9 +233,9 @@
           </figure>
         </section>
 
-        <!-- 2.2.2 -->
-        <section class="sub-sub" id="m-profundidade">
-          <h4><span class="sub-num">2.2.2</span> Determinação da profundidade média</h4>
+      <!-- 2.2 -->
+      <section class="sub" id="profundidade">
+        <h3><span class="sub-num">2.2</span> Determinação da profundidade média</h3>
           <p>A profundidade média do curso d'água deve ser determinada no mesmo trecho utilizado para a medição da largura, garantindo a consistência dos dados hídricos.</p>
           <p>Para cada seção de largura previamente definida (a cada 1 metro ao longo do trecho), devem ser realizadas medições de profundidade em três pontos distintos: próximo à margem esquerda, no centro do canal e próximo à margem direita. Essa distribuição permite representar de forma mais fiel as variações do leito do curso d'água.</p>
           <p>As medições devem ser executadas de maneira uniforme ao longo de todas as seções, contemplando tanto regiões mais rasas quanto mais profundas, evitando distorções no resultado final.</p>
@@ -520,9 +463,9 @@
           </figure>
         </section>
 
-        <!-- 2.2.3 -->
-        <section class="sub-sub" id="m-velocidade">
-          <h4><span class="sub-num">2.2.3</span> Velocidade superficial</h4>
+      <!-- 2.3 -->
+      <section class="sub" id="velocidade">
+        <h3><span class="sub-num">2.3</span> Velocidade superficial</h3>
           <p>A velocidade superficial do curso d'água deve ser determinada no mesmo trecho onde foram realizadas as medições de largura e profundidade médias, garantindo a representatividade dos dados utilizados no cálculo da vazão.</p>
           <p>Para essa medição, utiliza-se um objeto flutuante (como uma esfera parcialmente preenchida, por exemplo, uma bola de ping-pong ou similar), que deve ser lançado na correnteza em um ponto inicial previamente definido.</p>
           <p>Em seguida, mede-se o tempo necessário para que o objeto percorra uma distância conhecida, recomendando-se um trecho de 10 metros com fluxo relativamente homogêneo. Esse procedimento deve ser repetido mais de uma vez, a fim de reduzir possíveis interferências e obter maior confiabilidade nos resultados.</p>
@@ -633,9 +576,11 @@
           </figure>
         </section>
 
-        <!-- 2.2.4 -->
-        <section class="sub-sub" id="m-dose">
-          <h4><span class="sub-num">2.2.4</span> Dimensionamento da dose de larvicida</h4>
+      </section>
+
+    <!-- ============== 3. DIMENSIONAMENTO DA DOSE ============== -->
+    <section class="chapter" id="dose">
+      <h2><span class="ch-num">3.</span> Dimensionamento da Dose de VectoBac® 12AS</h2>
           <p>O dimensionamento da dose de VectoBac® 12AS para o controle de simulídeos é realizado com base nos dados obtidos em campo, sendo utilizado, como ferramenta de apoio, planilha técnica fornecida pelo fabricante do produto. Essa planilha automatiza o cálculo da dose a partir dos parâmetros hídricos medidos, garantindo maior padronização e confiabilidade nos resultados.</p>
           <p>O cálculo da dose é fundamentado nas medições de largura média, profundidade média, tempo de escoamento da água e no mesmo coeficiente de correção utilizado no cálculo da vazão, seguindo a seguinte expressão:</p>
 
@@ -650,9 +595,9 @@
             </ul>
           </div>
 
-          <p>O coeficiente de correção (C) é mantido no cálculo da dose pelas mesmas razões descritas no item 2.2: como o termo <em>(600 / TEMPO)</em> é derivado da velocidade superficial do flutuador, sua aplicação direta superestimaria o volume de água efetivamente escoado na seção. A inclusão de C garante a coerência entre o dimensionamento da dose e a vazão real do trecho, evitando subdosagem ou desperdício de produto.</p>
+          <p>O coeficiente de correção (C) é mantido no cálculo da dose pelas mesmas razões descritas no Capítulo 2: como o termo <em>(600 / TEMPO)</em> é derivado da velocidade superficial do flutuador, sua aplicação direta superestimaria o volume de água efetivamente escoado na seção. A inclusão de C garante a coerência entre o dimensionamento da dose e a vazão real do trecho, evitando subdosagem ou desperdício de produto.</p>
 
-          <p>A concentração de <strong>25 ppm</strong> é adotada como padrão no dimensionamento da dose para a aplicação de VectoBac® 12AS no controle de simulídeos, parâmetro consolidado pela planilha técnica do fabricante. Aplicando a fórmula com os dados medidos nas seções 2.2.1, 2.2.2 e 2.2.3 (L = 1,288 m; P = 0,1433 m; T = 40,67 s), obtém-se a dose detalhada a seguir:</p>
+          <p>A concentração de <strong>25 ppm</strong> é adotada como padrão no dimensionamento da dose para a aplicação de VectoBac® 12AS no controle de simulídeos, parâmetro consolidado pela planilha técnica do fabricante. Aplicando a fórmula com os dados medidos nas seções 2.1, 2.2 e 2.3 (L = 1,288 m; P = 0,1433 m; T = 40,67 s), obtém-se a dose detalhada a seguir:</p>
 
           <figure class="river-diagram">
             <svg viewBox="0 0 800 440" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Exemplo do cálculo da dose de larvicida combinando os dados medidos: largura, profundidade, tempo médio e concentração. Resultado: 58 ml.">
@@ -685,7 +630,7 @@
                   <polygon points="25,0 18,-6 18,6" fill="#f59e0b"/>
                 </g>
                 <text x="80" y="86" fill="#1a1414" font-family="Inter, sans-serif" font-size="20" font-weight="800" text-anchor="middle">1,288 m</text>
-                <text x="80" y="102" fill="#666" font-family="Inter, sans-serif" font-size="9" font-weight="600" text-anchor="middle">item 2.2.1</text>
+                <text x="80" y="102" fill="#666" font-family="Inter, sans-serif" font-size="9" font-weight="600" text-anchor="middle">item 2.1</text>
               </g>
 
               <!-- Card 2: PROFUNDIDADE (red) -->
@@ -702,7 +647,7 @@
                   <polygon points="0,18 -6,11 6,11" fill="#c8392f"/>
                 </g>
                 <text x="80" y="86" fill="#1a1414" font-family="Inter, sans-serif" font-size="20" font-weight="800" text-anchor="middle">0,1433 m</text>
-                <text x="80" y="102" fill="#666" font-family="Inter, sans-serif" font-size="9" font-weight="600" text-anchor="middle">item 2.2.2</text>
+                <text x="80" y="102" fill="#666" font-family="Inter, sans-serif" font-size="9" font-weight="600" text-anchor="middle">item 2.2</text>
               </g>
 
               <!-- Card 3: TEMPO MÉDIO (teal) -->
@@ -719,7 +664,7 @@
                   <line x1="0" y1="0" x2="7" y2="4"/>
                 </g>
                 <text x="80" y="86" fill="#1a1414" font-family="Inter, sans-serif" font-size="22" font-weight="800" text-anchor="middle">40,67 s</text>
-                <text x="80" y="102" fill="#666" font-family="Inter, sans-serif" font-size="9" font-weight="600" text-anchor="middle">item 2.2.3</text>
+                <text x="80" y="102" fill="#666" font-family="Inter, sans-serif" font-size="9" font-weight="600" text-anchor="middle">item 2.3</text>
               </g>
 
               <!-- Card 4: PPM (green) -->
@@ -766,7 +711,7 @@
               </g>
             </svg>
 
-            <figcaption><strong>Figura 4</strong> — Exemplo do dimensionamento da dose com os dados medidos nas seções 2.2.1, 2.2.2 e 2.2.3. Para um trecho com largura média de 1,288 m, profundidade média de 0,1433 m e tempo médio de 40,67 s, à concentração padrão de 25 ppm, a dose calculada de VectoBac® 12AS é de aproximadamente <strong>58 ml</strong> para o trecho avaliado, em conformidade com a planilha técnica do fabricante.</figcaption>
+            <figcaption><strong>Figura 4</strong> — Exemplo do dimensionamento da dose com os dados medidos nas seções 2.1, 2.2 e 2.3. Para um trecho com largura média de 1,288 m, profundidade média de 0,1433 m e tempo médio de 40,67 s, à concentração padrão de 25 ppm, a dose calculada de VectoBac® 12AS é de aproximadamente <strong>58 ml</strong> para o trecho avaliado, em conformidade com a planilha técnica do fabricante.</figcaption>
           </figure>
 
           <div class="callout warn">
@@ -776,158 +721,48 @@
             <p>Essa abordagem, embora menos precisa do que a medição direta, é amplamente empregada em programas de controle em áreas de difícil acesso, permitindo a continuidade das ações operacionais.</p>
             <p>Ressalta-se que, nessas situações, é indispensável a realização de monitoramento posterior, com o objetivo de avaliar a eficácia do tratamento e promover ajustes nas doses e nos pontos de aplicação em intervenções subsequentes, garantindo a efetividade do controle.</p>
           </div>
-        </section>
-      </section>
-
-      <!-- 2.3 -->
-      <section class="sub" id="m-identificacao">
-        <h3><span class="sub-num">2.3</span> Identificação dos Pontos</h3>
-        <p>Após a definição dos pontos de aplicação e o dimensionamento da dose de larvicida a ser utilizada em cada local, procede-se à identificação física dos pontos em campo, com o objetivo de garantir sua correta localização, padronização das aplicações e rastreabilidade das intervenções.</p>
-        <p>A identificação é realizada por meio da instalação de marcos visuais no local, como placas fixas, devidamente posicionadas em áreas de fácil visualização e acesso. Essas identificações devem conter informações essenciais, como código do ponto.</p>
-        <p>Paralelamente, cada ponto deve estar vinculado a uma ficha de controle, na qual são registradas todas as informações operacionais como: dose aplicada, datas de aplicação.</p>
-        <p>Esse procedimento permite:</p>
-        <ul class="bullet">
-          <li>Padronizar as operações de campo;</li>
-          <li>Facilitar a localização dos pontos pelas equipes;</li>
-          <li>Garantir a continuidade das ações ao longo do tempo;</li>
-          <li>Possibilitar o monitoramento e a avaliação da eficácia do controle.</li>
-        </ul>
-        <p>A correta identificação dos pontos é fundamental para assegurar a organização do programa, reduzir falhas operacionais e garantir maior eficiência nas aplicações de larvicida.</p>
-      </section>
-    </section>
-
-    <!-- ============== 3. EXECUÇÃO ============== -->
-    <section class="chapter" id="execucao">
-      <h2><span class="ch-num">3.</span> Execução das Medições de Vazão em Campo</h2>
-
-      <!-- 3.1 -->
-      <section class="sub" id="e-consideracoes">
-        <h3><span class="sub-num">3.1</span> Considerações iniciais</h3>
-        <p>A execução das medições de vazão dos cursos d'água foi realizada conforme metodologia descrita nos itens 2.2.1 a 2.2.4 deste relatório, contemplando os pontos onde é realizada a aplicação do larvicida biológico, distribuídos nas diferentes regiões do município de Joinville.</p>
-        <p>As atividades de campo foram conduzidas observando as condições hídricas e ambientais de cada ponto de aplicação, priorizando a segurança operacional e a representatividade dos dados coletados. Em locais onde foi possível executar a medição direta, todos os parâmetros hídricos (largura média, profundidade média, velocidade superficial e tempo de escoamento) foram registrados conforme a metodologia técnica adotada. Nos demais locais, em que as condições de campo inviabilizaram a medição direta, foi realizado o registro fotográfico documental e o dimensionamento da dose conduzido com base em critérios técnicos empíricos, conforme previsto na Observação Técnica do item 2.2.4.</p>
-      </section>
-
-      <!-- 3.2 -->
-      <section class="sub" id="e-regioes">
-        <h3><span class="sub-num">3.2</span> Regiões contempladas</h3>
-        <p>As medições e os registros foram organizados por região, conforme distribuição geográfica dos pontos de aplicação:</p>
-
-        <div class="regions-grid">
-          <article class="region">
-            <h5>Rio do Júlio</h5>
-            <p>Medição de vazão nos cursos hídricos com pontos de aplicação distribuídos ao longo das estradas da região.</p>
-          </article>
-          <article class="region">
-            <h5>Dona Francisca</h5>
-            <p>Medição de vazão nos cursos hídricos com pontos de aplicação da Estrada Tia Marta e demais estradas da região, contemplando os cursos hídricos principais.</p>
-          </article>
-          <article class="region">
-            <h5>Região Urbana</h5>
-            <p>Medição de vazão nos pontos de aplicação localizados no Parque Zoobotânico.</p>
-          </article>
-        </div>
-      </section>
-
-      <!-- 3.3 -->
-      <section class="sub" id="e-direta">
-        <h3><span class="sub-num">3.3</span> Pontos com medição direta de vazão</h3>
-        <p>Nos pontos de aplicação em que houve volume de água corrente suficiente e condições adequadas de acesso, foram executadas as medições de vazão pela metodologia descrita nos itens 2.2.1 a 2.2.3, com posterior dimensionamento da dose de larvicida conforme item 2.2.4.</p>
-        <p>Para cada ponto avaliado, são apresentados os seguintes dados consolidados:</p>
-
-        <div class="data-cards">
-          <article class="data-card">
-            <h5>Parâmetros hídricos calculados</h5>
-            <ul class="bullet">
-              <li>Vazão (m³/s);</li>
-              <li>Largura média (m);</li>
-              <li>Profundidade média (m);</li>
-              <li>Velocidade superficial (m/s);</li>
-              <li>Dose calculada de larvicida (ml).</li>
-            </ul>
-          </article>
-          <article class="data-card">
-            <h5>Dados brutos das medições de campo</h5>
-            <ul class="bullet">
-              <li>Larguras medidas a cada 1 metro ao longo do trecho (cm);</li>
-              <li>Profundidades medidas em três pontos por seção — margem esquerda, centro e margem direita (cm);</li>
-              <li>Tempos cronometrados nas repetições da medição de velocidade superficial (s).</li>
-            </ul>
-          </article>
-        </div>
-
-        <p>A apresentação dos dados brutos juntamente com os parâmetros calculados garante total transparência e rastreabilidade dos cálculos, permitindo a verificação técnica de cada medição apresentada.</p>
-      </section>
-
-      <!-- 3.4 -->
-      <section class="sub" id="e-sem-medicao">
-        <h3><span class="sub-num">3.4</span> Apresentação dos pontos sem medição de vazão</h3>
-        <p>Para cada ponto sem medição direta de vazão, são apresentados nos anexos os seguintes dados:</p>
-
-        <div class="data-cards">
-          <article class="data-card">
-            <h5>Dados cadastrais do ponto</h5>
-            <ul class="bullet">
-              <li>Código de identificação do ponto;</li>
-              <li>Região, estrada e cidade;</li>
-              <li>Cliente vinculado;</li>
-              <li>Coordenadas geográficas cadastrais;</li>
-              <li>Volume atual de larvicida aplicado (ml).</li>
-            </ul>
-          </article>
-          <article class="data-card">
-            <h5>Registro fotográfico georreferenciado</h5>
-            <ul class="bullet">
-              <li>Data e hora da captura (formato AAAA:MM:DD HH:MM:SS);</li>
-              <li>Coordenadas geográficas (GPS — latitude e longitude) extraídas dos metadados EXIF;</li>
-              <li>Imagem do ponto avaliado, comprovando as condições encontradas em campo.</li>
-            </ul>
-          </article>
-        </div>
-      </section>
-
-      <!-- 3.5 -->
-      <section class="sub" id="e-comprovacao">
-        <h3><span class="sub-num">3.5</span> Comprovação técnica e atualizações futuras</h3>
-        <p>Os registros apresentados nos anexos deste relatório representam as medições e avaliações executadas até a presente data, organizadas por região e ponto de aplicação. As demais regiões do município poderão ser contempladas em medições futuras, conforme cronograma operacional e disponibilidade de condições adequadas de campo.</p>
-        <p>Considerando o caráter dinâmico do programa de controle de simulídeos e a possibilidade de execução de novas medições, a relação de pontos apresentada neste relatório poderá ser atualizada e complementada em entregas futuras, mantendo-se o mesmo padrão técnico de apresentação:</p>
-        <ul class="bullet">
-          <li>Para pontos com medição direta de vazão: parâmetros hídricos calculados, dados brutos das medições de campo e registro fotográfico georreferenciado;</li>
-          <li>Para pontos sem medição direta: dados cadastrais e registro fotográfico documental georreferenciado.</li>
-        </ul>
-        <p>Esta estrutura padronizada garante a rastreabilidade e a comprovação técnica do serviço executado, tanto nas medições já realizadas quanto nas que vierem a ser incorporadas em atualizações posteriores deste produto.</p>
-      </section>
-    </section>
-
-    <!-- ============== ASSINATURAS ============== -->
-    <section class="signatures">
-      <p class="sig-place">Joinville, 29 de abril de 2026.</p>
-      <div class="sig-grid">
-        <div class="sig">
-          <span class="sig-line"></span>
-          <strong>Osmar Adelino de Aviz</strong>
-          <span class="sig-role">Administrador</span>
-        </div>
-        <div class="sig">
-          <span class="sig-line"></span>
-          <strong>Eder Corbari</strong>
-          <span class="sig-role">Eng. Ambiental — CRQ 13302332</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============== ANEXOS ============== -->
-    <section class="annex">
-      <h2>Anexos</h2>
-      <p class="annex-note">Os anexos contêm os registros de medição por ponto e região, conforme estrutura técnica descrita nos itens 3.3 e 3.4. Material complementar disponibilizado em entregas futuras conforme cronograma.</p>
     </section>
 
   </main>
 
   <footer class="site-footer">
-    <span>Material técnico — <a href="../">Comércio e Serviços Aracaju LTDA</a></span>
-    <span>·</span>
-    <a href="https://tudonanuvem.net" target="_blank" rel="noopener">tudonanuvem.net</a>
+    Criado por <a href="https://aracajuservicos.com.br" target="_blank" rel="noopener">Comércio e Serviços Aracaju LTDA</a>
+    <span class="footer-sep">·</span>
+    Desenvolvido por <a href="https://tudonanuvem.net" target="_blank" rel="noopener">tudonanuvem.net</a>
   </footer>
+
+  <script>
+    // Drawer do sumário
+    (function () {
+      const btn = document.getElementById('tocBtn');
+      const drawer = document.getElementById('tocDrawer');
+      const backdrop = document.getElementById('tocBackdrop');
+      const closeBtn = document.getElementById('tocClose');
+      const links = drawer.querySelectorAll('a[href^="#"]');
+
+      function open() {
+        drawer.classList.add('is-open');
+        drawer.setAttribute('aria-hidden', 'false');
+        btn.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
+      }
+      function close() {
+        drawer.classList.remove('is-open');
+        drawer.setAttribute('aria-hidden', 'true');
+        btn.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      }
+
+      btn.addEventListener('click', open);
+      closeBtn.addEventListener('click', close);
+      backdrop.addEventListener('click', close);
+      links.forEach(a => a.addEventListener('click', close));
+      document.addEventListener('keydown', e => {
+        if (e.key === 'Escape' && drawer.classList.contains('is-open')) close();
+      });
+    })();
+
+  </script>
 
 </body>
 </html>
