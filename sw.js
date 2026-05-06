@@ -1,4 +1,4 @@
-const CACHE_NAME = 'aracaju-v3';
+const CACHE_NAME = 'aracaju-v10';
 
 const ASSETS = [
   './',
